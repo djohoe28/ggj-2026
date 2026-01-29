@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dm6qoe57l87ub"]
+
+[ext_resource type="Script" uid="uid://bfp47af7hk2l" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="2_g2els"]
+
+[sub_resource type="Gradient" id="Gradient_g2els"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+fill_to = Vector2(0.8663194, 0.8559028)
+
+[node name="Player" type="StaticBody2D" unique_id=1334473963]
+script = ExtResource("1_3vyb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=410929129]
+texture = SubResource("GradientTexture2D_qhqgy")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=585140240]
+target_position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138204774]
+shape = ExtResource("2_g2els")
+
+[node name="Label" type="Label" parent="." unique_id=1845525881]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
