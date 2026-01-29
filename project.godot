@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="GGJ2026"
+run/main_scene="uid://rlv0umd7rnq7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*uid://bgssrwoeg1lbe"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "blue",
+"res://scripts/": "green"
+}
 
 [physics]
 
