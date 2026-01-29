@@ -10,7 +10,7 @@ gradient = SubResource("Gradient_3inec")
 fill_from = Vector2(0.074652776, 0.07118055)
 fill_to = Vector2(0.984375, 1)
 
-[node name="Box" type="StaticBody2D" unique_id=18686666]
+[node name="Box" type="StaticBody2D" unique_id=18686666 groups=["Pushable"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700293775]
 texture = SubResource("GradientTexture2D_ks2v0")
