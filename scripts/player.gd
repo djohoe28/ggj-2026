@@ -1,8 +1,7 @@
-extends StaticBody2D
+extends Movable
+class_name Player
 
-signal moved
-signal pushed
-signal blocked
+signal pushed(player: Player, collider: Movable, direction: Vector2)
 
 @export var moves_after_push: bool = true
 
@@ -13,33 +12,29 @@ const ActionToVector = {
 	"ui_down": Vector2.DOWN
 }
 
-func move(direction: Vector2) -> void:
-	position += direction * Globals.TILE_SIZE
-	emit_signal("moved")
-
-func try_move(direction: Vector2) -> void:
+func try_move(direction: Vector2) -> bool:
 	# Check for collision
 	$RayCast2D.target_position = direction * Globals.TILE_SIZE
 	$RayCast2D.force_raycast_update()
-	# Move if no collision
+	
 	if not $RayCast2D.is_colliding():
 		move(direction)
-	else:
-		var collider = $RayCast2D.get_collider() as Node2D
-		# If colliding with a pushable object, try to push it
-		if collider.is_in_group("Pushable"):
-			collider.call("try_push", direction)
-			emit_signal("pushed", collider, direction)
-			# Move after pushing if toggled
-			if moves_after_push:
-				move(direction)
-			print(name, " pushed ", collider.name)
-		else:
-			emit_signal("blocked")
-			print(name, " blocked by ", collider.name)
+		return true
+	
+	var collider = $RayCast2D.get_collider()
+	
+	# Try to push movable objects
+	if collider is Movable and collider.try_move(direction):
+		pushed.emit(self, collider, direction)
+		if moves_after_push:
+			move(direction)
+		return true
+	
+	# Movement blocked
+	blocked.emit(self, collider, direction)
+	return false
 
 func _unhandled_input(_event: InputEvent) -> void:
-	# Handle movement input; Order is determined by `ActionToVector.keys()`.
-	for action in ActionToVector.keys():
+	for action in ActionToVector:
 		if Input.is_action_just_pressed(action):
 			try_move(ActionToVector[action])
