@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MASK STREAM - AI Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; background: #111; color: #fff; font-family: system-ui, sans-serif; display: flex; justify-content: center; }
+        #game { width: 360px; height: 640px; background: #1a1a1a; display: flex; flex-direction: column; border: 2px solid #333; }
+        #stats { display: flex; justify-content: space-between; padding: 15px; background: #222; font-size: 14px; font-weight: bold; color: #0f0; }
+        #prompt { padding: 15px; background: #2a2a2a; font-size: 14px; text-align: center; border-bottom: 1px solid #333; min-height: 40px; color: #ddd; }
+        #face { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 120px; transition: transform 0.2s; user-select: none; }
+        #chat { height: 180px; overflow-y: auto; background: #000; padding: 10px; font-size: 13px; border-top: 1px solid #333; }
+        .chat-line { margin-bottom: 6px; border-left: 3px solid #444; padding-left: 8px; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        #controls { display: flex; justify-content: space-around; padding: 15px; background: #222; }
+        .mask { font-size: 32px; cursor: pointer; transition: 0.2s; filter: grayscale(0.5); }
+        .mask:hover { transform: scale(1.2); filter: grayscale(0); }
+        .shake { animation: shake 0.3s; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 50% { transform: translateX(8px); } 75% { transform: translateX(-8px); } }
+    </style>
+</head>
+<body>
+
+<div id="game">
+    <div id="stats">
+        <div>👁️ <span id="viewers">42</span></div>
+        <div>💸 $<span id="tips">0</span></div>
+    </div>
+    <div id="prompt">Connecting to AI Director...</div>
+    <div id="face">😐</div>
+    <div id="chat"></div>
+    <div id="controls">
+        <div class="mask" data-mask="😊">😊</div>
+        <div class="mask" data-mask="😏">😏</div>
+        <div class="mask" data-mask="😐">😐</div>
+        <div class="mask" data-mask="😡">😡</div>
+        <div class="mask" data-mask="😢">😢</div>
+        <div class="mask" data-mask="🤡">🤡</div>
+    </div>
+</div>
+
+<script type="module">
+  import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+  // 1. Setup Gemini
+  const genAI = new GoogleGenerativeAI("AIzaSyAes55QGSWMHxLUZa1pu9_-2rafURWRu0E");
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
+
+  // 2. Game State Variables
+  const face = document.getElementById("face");
+  const chat = document.getElementById("chat");
+  const viewersEl = document.getElementById("viewers");
+  const tipsEl = document.getElementById("tips");
+  const promptEl = document.getElementById("prompt");
+
+  let viewers = 42;
+  let tips = 0;
+  let burnout = 0;
+  let currentEvent = null;
+  let face_expression = "😐";
+  let lastRequestTime = 0;
+  const COOLDOWN_MS = 150000; 
+
+  let events = [
+    { prompt: "Tell chat you really appreciate them.", comment: "gemini missing the chat", correct: "😊", forbidden: ["😡", "🤡"] }
+  ];
+
+  // 3. Game Functions
+  function addChat(text) {
+    const line = document.createElement("div");
+    line.className = "chat-line";
+    line.textContent = text;
+    chat.appendChild(line);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function spawnEvent() {
+    if (events.length === 0) return;
+    currentEvent = events[Math.floor(Math.random() * events.length)];
+    promptEl.textContent = "🎤 " + currentEvent.prompt;
+    addChat("💬 " + currentEvent.comment);
+  }
+
+  async function callGemini() {
+    const now = Date.now();
+    if (now - lastRequestTime < COOLDOWN_MS) return;
+    
+    lastRequestTime = now;
+    console.log("Requesting new events from AI...");
+
+      const promptText = `Player is ${face_expression}. Create a JS list of 50 game events following this pattern: [{"prompt":"text","comment":"text","correct":"emoji","forbidden":["emoji"]}]`;
+      const result = await model.generateContent(promptText);
+      const response = await result.response;
+      const text = response.text().replace(/```json|```/g, ""); // Clean formatting
+      
+      events = JSON.parse(text);
+      console.log("New AI events loaded!");
+
+  }
+
+  // 4. Input Handlers (We use .addEventListener instead of onclick)
+  document.querySelectorAll(".mask").forEach(m => {
+    m.addEventListener('click', () => {
+      const mask = m.dataset.mask;
+      face_expression = mask;
+      face.textContent = mask;
+      
+      if (!currentEvent) return;
+
+      // Logic for score
+      if (currentEvent.forbidden.includes(mask)) { viewers -= 8; addChat("😠 Chat hated that!"); }
+      else if (mask === currentEvent.correct) { viewers += 5; tips += 2; addChat("💸 Tip received!"); }
+      else { viewers -= 2; }
+
+      viewersEl.textContent = Math.max(0, viewers);
+      tipsEl.textContent = tips;
+      currentEvent = null;
+      promptEl.textContent = "Wait for next event...";
+    });
+  });
+
+  // 5. THE LOOP
+  setInterval(() => {
+    spawnEvent();
+    callGemini(); // This only fires if cooldown is over
+  }, 5000);
+
+  console.log("Game fully loaded and connected to Gemini!");
+</script>
+</body>
+</html>
