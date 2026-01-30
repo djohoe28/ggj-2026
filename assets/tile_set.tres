@@ -1,115 +1,138 @@
 [gd_resource type="TileSet" format=3 uid="uid://drb7k0754qprm"]
 
-[ext_resource type="Texture2D" uid="uid://wov21goyieio" path="res://assets/tileset_mockup.png" id="1_eslq1"]
-[ext_resource type="PackedScene" uid="uid://bhyke73ra0abu" path="res://scenes/entities/box/box.tscn" id="2_cpn64"]
-[ext_resource type="PackedScene" uid="uid://bjla6tbcmmap4" path="res://scenes/entities/player/player.tscn" id="3_7qmym"]
-[ext_resource type="PackedScene" uid="uid://1m50v8avbxjn" path="res://scenes/entities/player/player_1.tscn" id="4_sryw2"]
-[ext_resource type="PackedScene" uid="uid://brcn3xrwf2yry" path="res://scenes/entities/player/player_2.tscn" id="5_prmj7"]
-[ext_resource type="PackedScene" uid="uid://tgrtylaqmeh6" path="res://scenes/entities/wall/wall.tscn" id="6_dixdc"]
+[ext_resource type="PackedScene" uid="uid://o0gb18u4h18o" path="res://scenes/entities/tiles/Blue_Controlled_Controlled.tscn" id="1_263wg"]
+[ext_resource type="PackedScene" uid="uid://briusd5gop817" path="res://scenes/entities/tiles/Blue_Controlled_Ghost.tscn" id="2_ahuh7"]
+[ext_resource type="PackedScene" uid="uid://cnc3ok4kymn2q" path="res://scenes/entities/tiles/Blue_Controlled_Immovable.tscn" id="3_s4xki"]
+[ext_resource type="PackedScene" uid="uid://blbn8lumrv0u3" path="res://scenes/entities/tiles/Blue_Controlled_Movable.tscn" id="4_31jfq"]
+[ext_resource type="PackedScene" uid="uid://dx61mipiu24y2" path="res://scenes/entities/tiles/Blue_Ghost_Controlled.tscn" id="5_dk30n"]
+[ext_resource type="PackedScene" uid="uid://r0j8voerans0" path="res://scenes/entities/tiles/Blue_Ghost_Ghost.tscn" id="6_nhjhm"]
+[ext_resource type="PackedScene" uid="uid://sn2t42c78tar" path="res://scenes/entities/tiles/Blue_Ghost_Immovable.tscn" id="7_ml5tq"]
+[ext_resource type="PackedScene" uid="uid://6udkshbt38ey" path="res://scenes/entities/tiles/Blue_Ghost_Movable.tscn" id="8_jks14"]
+[ext_resource type="PackedScene" uid="uid://ca007kyx48onc" path="res://scenes/entities/tiles/Blue_Immovable_Controlled.tscn" id="9_heyte"]
+[ext_resource type="PackedScene" uid="uid://dwyq8hpr0o0l3" path="res://scenes/entities/tiles/Blue_Immovable_Ghost.tscn" id="10_h48ho"]
+[ext_resource type="PackedScene" uid="uid://d0x1g8shttgxa" path="res://scenes/entities/tiles/Blue_Immovable_Immovable.tscn" id="11_v87wo"]
+[ext_resource type="PackedScene" uid="uid://cwlghv55mrg6" path="res://scenes/entities/tiles/Blue_Immovable_Movable.tscn" id="12_u2m84"]
+[ext_resource type="PackedScene" uid="uid://cmbdjjiawo7uc" path="res://scenes/entities/tiles/Blue_Movable_Controlled.tscn" id="13_8w3o5"]
+[ext_resource type="PackedScene" uid="uid://k360avvdxvro" path="res://scenes/entities/tiles/Blue_Movable_Ghost.tscn" id="14_hkejl"]
+[ext_resource type="PackedScene" uid="uid://cui8re6fukyma" path="res://scenes/entities/tiles/Blue_Movable_Immovable.tscn" id="15_qhk6k"]
+[ext_resource type="PackedScene" uid="uid://dlnt0ntgl2v18" path="res://scenes/entities/tiles/Blue_Movable_Movable.tscn" id="16_57npt"]
+[ext_resource type="PackedScene" uid="uid://bhf1umifbgbew" path="res://scenes/entities/tiles/Both_Controlled_Controlled.tscn" id="17_ymwn5"]
+[ext_resource type="PackedScene" uid="uid://b4daxowlo1jos" path="res://scenes/entities/tiles/Both_Controlled_Ghost.tscn" id="18_300on"]
+[ext_resource type="PackedScene" uid="uid://dj4xa5n63g151" path="res://scenes/entities/tiles/Both_Controlled_Immovable.tscn" id="19_hfj5w"]
+[ext_resource type="PackedScene" uid="uid://c4pkuqpkguvfp" path="res://scenes/entities/tiles/Both_Controlled_Movable.tscn" id="20_v0ah6"]
+[ext_resource type="PackedScene" uid="uid://de1pl8jfcmrai" path="res://scenes/entities/tiles/Both_Ghost_Controlled.tscn" id="21_10lrf"]
+[ext_resource type="PackedScene" uid="uid://xwxruphkmuls" path="res://scenes/entities/tiles/Both_Ghost_Ghost.tscn" id="22_rpwfv"]
+[ext_resource type="PackedScene" uid="uid://c33l3lbsss0ri" path="res://scenes/entities/tiles/Both_Ghost_Immovable.tscn" id="23_mfhgk"]
+[ext_resource type="PackedScene" uid="uid://di2x56ugain6f" path="res://scenes/entities/tiles/Both_Ghost_Movable.tscn" id="24_0lvg2"]
+[ext_resource type="PackedScene" uid="uid://bmp04kqbhqol7" path="res://scenes/entities/tiles/Both_Immovable_Controlled.tscn" id="25_t1fyu"]
+[ext_resource type="PackedScene" uid="uid://dnfuc37gkj701" path="res://scenes/entities/tiles/Both_Immovable_Ghost.tscn" id="26_qqi45"]
+[ext_resource type="PackedScene" uid="uid://d2yb4jewxe0rb" path="res://scenes/entities/tiles/Both_Immovable_Immovable.tscn" id="27_fx6vf"]
+[ext_resource type="PackedScene" uid="uid://btkqyp0x32rhd" path="res://scenes/entities/tiles/Both_Immovable_Movable.tscn" id="28_iioos"]
+[ext_resource type="PackedScene" uid="uid://bk0xnlakyrn78" path="res://scenes/entities/tiles/Both_Movable_Controlled.tscn" id="29_c3mia"]
+[ext_resource type="PackedScene" uid="uid://c4qwb2513qi5l" path="res://scenes/entities/tiles/Both_Movable_Ghost.tscn" id="30_pepem"]
+[ext_resource type="PackedScene" uid="uid://5vtvaj7k1qqe" path="res://scenes/entities/tiles/Both_Movable_Immovable.tscn" id="31_ll8xk"]
+[ext_resource type="PackedScene" uid="uid://dluon0b815gre" path="res://scenes/entities/tiles/Both_Movable_Movable.tscn" id="32_40n6u"]
+[ext_resource type="PackedScene" uid="uid://cslex41xbn53k" path="res://scenes/entities/tiles/None_Controlled_Controlled.tscn" id="33_h307y"]
+[ext_resource type="PackedScene" uid="uid://cwddnqnxoauny" path="res://scenes/entities/tiles/None_Controlled_Ghost.tscn" id="34_vska1"]
+[ext_resource type="PackedScene" uid="uid://bw03h6rn4e1pt" path="res://scenes/entities/tiles/None_Controlled_Immovable.tscn" id="35_cvled"]
+[ext_resource type="PackedScene" uid="uid://dxd1nxmgxapyn" path="res://scenes/entities/tiles/None_Controlled_Movable.tscn" id="36_cssdr"]
+[ext_resource type="PackedScene" uid="uid://boj3wr3sqwm2a" path="res://scenes/entities/tiles/None_Ghost_Controlled.tscn" id="37_hfufo"]
+[ext_resource type="PackedScene" uid="uid://wgtr2o66vbir" path="res://scenes/entities/tiles/None_Ghost_Ghost.tscn" id="38_kxh0v"]
+[ext_resource type="PackedScene" uid="uid://dqkt2abf2veiu" path="res://scenes/entities/tiles/None_Ghost_Immovable.tscn" id="39_g1enl"]
+[ext_resource type="PackedScene" uid="uid://ccwadkqli0k5s" path="res://scenes/entities/tiles/None_Ghost_Movable.tscn" id="40_4awf7"]
+[ext_resource type="PackedScene" uid="uid://b0cfp2ng0oeog" path="res://scenes/entities/tiles/None_Immovable_Controlled.tscn" id="41_3ona3"]
+[ext_resource type="PackedScene" uid="uid://cwokmxv4jho53" path="res://scenes/entities/tiles/None_Immovable_Ghost.tscn" id="42_fgv5p"]
+[ext_resource type="PackedScene" uid="uid://devlr2q1tdjeh" path="res://scenes/entities/tiles/None_Immovable_Immovable.tscn" id="43_hlx4x"]
+[ext_resource type="PackedScene" uid="uid://cws457hbbcesr" path="res://scenes/entities/tiles/None_Immovable_Movable.tscn" id="44_yw6ru"]
+[ext_resource type="PackedScene" uid="uid://0ilcwo1mgtfu" path="res://scenes/entities/tiles/None_Movable_Controlled.tscn" id="45_5mi3b"]
+[ext_resource type="PackedScene" uid="uid://cqcfvktuunrx5" path="res://scenes/entities/tiles/None_Movable_Ghost.tscn" id="46_5hkns"]
+[ext_resource type="PackedScene" uid="uid://c22yegx6m324j" path="res://scenes/entities/tiles/None_Movable_Immovable.tscn" id="47_3uqpc"]
+[ext_resource type="PackedScene" uid="uid://d7y8nlax4fcc" path="res://scenes/entities/tiles/None_Movable_Movable.tscn" id="48_c7gqv"]
+[ext_resource type="PackedScene" uid="uid://pq0ooeji45l0" path="res://scenes/entities/tiles/Red_Controlled_Controlled.tscn" id="49_fjsfq"]
+[ext_resource type="PackedScene" uid="uid://1maobbwb0ace" path="res://scenes/entities/tiles/Red_Controlled_Ghost.tscn" id="50_8aujl"]
+[ext_resource type="PackedScene" uid="uid://ddq1nm1bhpoxn" path="res://scenes/entities/tiles/Red_Controlled_Immovable.tscn" id="51_takvc"]
+[ext_resource type="PackedScene" uid="uid://b4gcn15e7asnh" path="res://scenes/entities/tiles/Red_Controlled_Movable.tscn" id="52_psqmn"]
+[ext_resource type="PackedScene" uid="uid://iex0qvb1fxr4" path="res://scenes/entities/tiles/Red_Ghost_Controlled.tscn" id="53_1xj4f"]
+[ext_resource type="PackedScene" uid="uid://lxm2mewg4hwk" path="res://scenes/entities/tiles/Red_Ghost_Ghost.tscn" id="54_kdgmu"]
+[ext_resource type="PackedScene" uid="uid://ccxft0hqu710i" path="res://scenes/entities/tiles/Red_Ghost_Immovable.tscn" id="55_inx6a"]
+[ext_resource type="PackedScene" uid="uid://bawsgxc1bnoit" path="res://scenes/entities/tiles/Red_Ghost_Movable.tscn" id="56_dyks1"]
+[ext_resource type="PackedScene" uid="uid://by40kn7emfhwd" path="res://scenes/entities/tiles/Red_Immovable_Controlled.tscn" id="57_mo6h3"]
+[ext_resource type="PackedScene" uid="uid://687ss3xatgsv" path="res://scenes/entities/tiles/Red_Immovable_Ghost.tscn" id="58_q4kvi"]
+[ext_resource type="PackedScene" uid="uid://6vuwcngl642g" path="res://scenes/entities/tiles/Red_Immovable_Immovable.tscn" id="59_q3don"]
+[ext_resource type="PackedScene" uid="uid://y6bncb0k1pw1" path="res://scenes/entities/tiles/Red_Immovable_Movable.tscn" id="60_ym3r6"]
+[ext_resource type="PackedScene" uid="uid://cboaiqek1wlf5" path="res://scenes/entities/tiles/Red_Movable_Controlled.tscn" id="61_nuidt"]
+[ext_resource type="PackedScene" uid="uid://cocpwtr28h2wk" path="res://scenes/entities/tiles/Red_Movable_Ghost.tscn" id="62_ydq2t"]
+[ext_resource type="PackedScene" uid="uid://cg0dc7p53ghk1" path="res://scenes/entities/tiles/Red_Movable_Immovable.tscn" id="63_0pq26"]
+[ext_resource type="PackedScene" uid="uid://cup8pdkkgwrom" path="res://scenes/entities/tiles/Red_Movable_Movable.tscn" id="64_a7sqk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki5qi"]
-resource_name = "atlas_mockup"
-texture = ExtResource("1_eslq1")
-texture_region_size = Vector2i(60, 60)
-0:0/0 = 0
-0:0/0/custom_data_2 = 3
-0:0/0/custom_data_3 = 1
-1:0/0 = 0
-1:0/0/custom_data_2 = 2
-1:0/0/custom_data_3 = 3
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-0:1/0/custom_data_0 = true
-0:1/0/custom_data_1 = true
-0:1/0/custom_data_2 = 1
-0:1/0/custom_data_3 = 1
-1:1/0 = 0
-1:1/0/custom_data_0 = true
-1:1/0/custom_data_1 = true
-1:1/0/custom_data_2 = 3
-1:1/0/custom_data_3 = 1
-2:1/0 = 0
-2:1/0/custom_data_0 = true
-2:1/0/custom_data_1 = true
-2:1/0/custom_data_3 = 1
-3:1/0 = 0
-3:1/0/custom_data_0 = true
-3:1/0/custom_data_1 = true
-3:1/0/custom_data_2 = 1
-3:1/0/custom_data_3 = 2
-4:1/0 = 0
-4:1/0/custom_data_0 = true
-4:1/0/custom_data_1 = true
-4:1/0/custom_data_2 = 1
-0:2/0 = 0
-0:2/0/custom_data_0 = true
-0:2/0/custom_data_2 = 1
-0:2/0/custom_data_3 = 1
-1:2/0 = 0
-1:2/0/custom_data_0 = true
-1:2/0/custom_data_2 = 3
-1:2/0/custom_data_3 = 1
-2:2/0 = 0
-2:2/0/custom_data_0 = true
-2:2/0/custom_data_3 = 1
-3:2/0 = 0
-3:2/0/custom_data_0 = true
-3:2/0/custom_data_2 = 1
-3:2/0/custom_data_3 = 2
-4:2/0 = 0
-4:2/0/custom_data_0 = true
-4:2/0/custom_data_2 = 1
-0:3/0 = 0
-0:3/0/custom_data_1 = true
-0:3/0/custom_data_2 = 1
-0:3/0/custom_data_3 = 1
-1:3/0 = 0
-1:3/0/custom_data_1 = true
-1:3/0/custom_data_2 = 3
-1:3/0/custom_data_3 = 1
-2:3/0 = 0
-2:3/0/custom_data_1 = true
-2:3/0/custom_data_3 = 1
-3:3/0 = 0
-3:3/0/custom_data_1 = true
-3:3/0/custom_data_2 = 1
-3:3/0/custom_data_3 = 2
-4:3/0 = 0
-4:3/0/custom_data_1 = true
-4:3/0/custom_data_2 = 1
-0:4/0 = 0
-0:4/0/custom_data_2 = 1
-0:4/0/custom_data_3 = 1
-1:4/0 = 0
-1:4/0/custom_data_2 = 3
-1:4/0/custom_data_3 = 1
-2:4/0 = 0
-2:4/0/custom_data_3 = 1
-3:4/0 = 0
-3:4/0/custom_data_2 = 1
-3:4/0/custom_data_3 = 2
-4:4/0 = 0
-4:4/0/custom_data_2 = 1
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_581ag"]
-resource_name = "scenes"
-scenes/1/scene = ExtResource("2_cpn64")
-scenes/2/scene = ExtResource("3_7qmym")
-scenes/3/scene = ExtResource("4_sryw2")
-scenes/4/scene = ExtResource("5_prmj7")
-scenes/5/scene = ExtResource("6_dixdc")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u6000"]
+scenes/10/scene = ExtResource("1_263wg")
+scenes/11/scene = ExtResource("2_ahuh7")
+scenes/12/scene = ExtResource("3_s4xki")
+scenes/13/scene = ExtResource("4_31jfq")
+scenes/14/scene = ExtResource("5_dk30n")
+scenes/15/scene = ExtResource("6_nhjhm")
+scenes/16/scene = ExtResource("7_ml5tq")
+scenes/17/scene = ExtResource("8_jks14")
+scenes/18/scene = ExtResource("9_heyte")
+scenes/19/scene = ExtResource("10_h48ho")
+scenes/20/scene = ExtResource("11_v87wo")
+scenes/21/scene = ExtResource("12_u2m84")
+scenes/22/scene = ExtResource("13_8w3o5")
+scenes/23/scene = ExtResource("14_hkejl")
+scenes/24/scene = ExtResource("15_qhk6k")
+scenes/25/scene = ExtResource("16_57npt")
+scenes/26/scene = ExtResource("17_ymwn5")
+scenes/27/scene = ExtResource("18_300on")
+scenes/28/scene = ExtResource("19_hfj5w")
+scenes/29/scene = ExtResource("20_v0ah6")
+scenes/30/scene = ExtResource("21_10lrf")
+scenes/31/scene = ExtResource("22_rpwfv")
+scenes/32/scene = ExtResource("23_mfhgk")
+scenes/33/scene = ExtResource("24_0lvg2")
+scenes/34/scene = ExtResource("25_t1fyu")
+scenes/35/scene = ExtResource("26_qqi45")
+scenes/36/scene = ExtResource("27_fx6vf")
+scenes/37/scene = ExtResource("28_iioos")
+scenes/38/scene = ExtResource("29_c3mia")
+scenes/39/scene = ExtResource("30_pepem")
+scenes/40/scene = ExtResource("31_ll8xk")
+scenes/41/scene = ExtResource("32_40n6u")
+scenes/42/scene = ExtResource("33_h307y")
+scenes/43/scene = ExtResource("34_vska1")
+scenes/44/scene = ExtResource("35_cvled")
+scenes/45/scene = ExtResource("36_cssdr")
+scenes/46/scene = ExtResource("37_hfufo")
+scenes/47/scene = ExtResource("38_kxh0v")
+scenes/48/scene = ExtResource("39_g1enl")
+scenes/49/scene = ExtResource("40_4awf7")
+scenes/50/scene = ExtResource("41_3ona3")
+scenes/51/scene = ExtResource("42_fgv5p")
+scenes/52/scene = ExtResource("43_hlx4x")
+scenes/53/scene = ExtResource("44_yw6ru")
+scenes/54/scene = ExtResource("45_5mi3b")
+scenes/55/scene = ExtResource("46_5hkns")
+scenes/56/scene = ExtResource("47_3uqpc")
+scenes/57/scene = ExtResource("48_c7gqv")
+scenes/58/scene = ExtResource("49_fjsfq")
+scenes/59/scene = ExtResource("50_8aujl")
+scenes/60/scene = ExtResource("51_takvc")
+scenes/61/scene = ExtResource("52_psqmn")
+scenes/62/scene = ExtResource("53_1xj4f")
+scenes/63/scene = ExtResource("54_kdgmu")
+scenes/64/scene = ExtResource("55_inx6a")
+scenes/65/scene = ExtResource("56_dyks1")
+scenes/66/scene = ExtResource("57_mo6h3")
+scenes/67/scene = ExtResource("58_q4kvi")
+scenes/68/scene = ExtResource("59_q3don")
+scenes/69/scene = ExtResource("60_ym3r6")
+scenes/70/scene = ExtResource("61_nuidt")
+scenes/71/scene = ExtResource("62_ydq2t")
+scenes/72/scene = ExtResource("63_0pq26")
+scenes/73/scene = ExtResource("64_a7sqk")
 
 [resource]
 tile_size = Vector2i(60, 60)
-custom_data_layer_0/name = "p1_visible"
-custom_data_layer_0/type = 1
-custom_data_layer_1/name = "p2_visible"
-custom_data_layer_1/type = 1
-custom_data_layer_2/name = "p1_relationship"
-custom_data_layer_2/type = 2
-custom_data_layer_3/name = "p2_relationship"
-custom_data_layer_3/type = 2
-sources/1 = SubResource("TileSetAtlasSource_ki5qi")
-sources/2 = SubResource("TileSetScenesCollectionSource_581ag")
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 0
+sources/0 = SubResource("TileSetScenesCollectionSource_u6000")

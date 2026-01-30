@@ -9,7 +9,7 @@ extends Node2D
 @export var current_level: int = 0
 @onready var level_container: Node2D = $"./LevelContainer"
 
-func _ready() -> void:	
+func _ready() -> void:
 	Globals.update_color(Globals.ColorFlag.NONE, none)
 	Globals.update_color(Globals.ColorFlag.BLUE, blue)
 	Globals.update_color(Globals.ColorFlag.RED, red)

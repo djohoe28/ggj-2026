@@ -88,6 +88,34 @@ var _queued_direction: Vector2 = Vector2.ZERO
 var _queued_pusher_id: int = 0
 var is_moving: bool = false
 
+func apply_name() -> void:
+	if visible_to_player1 and visible_to_player2:
+		name = "Both"
+	elif visible_to_player1:
+		name = "Blue"
+	elif visible_to_player2:
+		name = "Red"
+	else:
+		name = "None"
+	if relationship_with_player1 == Relationship.GHOST:
+		name += " Ghost"
+	elif relationship_with_player1 == Relationship.MOVABLE:
+		name += " Movable"
+	elif relationship_with_player1 == Relationship.IMMOVABLE:
+		name += " Immovable"
+	elif relationship_with_player1 == Relationship.CONTROLLED:
+		name += " Controlled"
+	if relationship_with_player2 == Relationship.GHOST:
+		name += " Ghost"
+	elif relationship_with_player2 == Relationship.MOVABLE:
+		name += " Movable"
+	elif relationship_with_player2 == Relationship.IMMOVABLE:
+		name += " Immovable"
+	elif relationship_with_player2 == Relationship.CONTROLLED:
+		name += " Controlled"
+	name = name.replace(" ", "_")
+	$Label.text = name.replace("_", "\n")
+
 func apply_relationship_with_players() -> void:
 	match relationship_with_player1:
 		Relationship.GHOST:
@@ -107,23 +135,61 @@ func apply_relationship_with_players() -> void:
 			# Add to Collision Layer 2.
 			collision_layer |= 2
 			collision_mask |= 2
+	apply_name()
 
 func apply_visibility_for_players() -> void:
-	return  # TODO: Disabled for now.
-	# if visible_to_player1 and visible_to_player2:
-	# 	$Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BOTH]
-	# elif visible_to_player1:
-	# 	$Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BLUE]
-	# elif visible_to_player2:
-	# 	$Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.RED]
-	# else:
-	# 	$Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.NONE]
+	if visible_to_player1 and visible_to_player2:
+		$Sprite2D.color_key = Globals.ColorFlag.BOTH
+		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BOTH]
+	elif visible_to_player1:
+		$Sprite2D.color_key = Globals.ColorFlag.BLUE
+		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BLUE]
+	elif visible_to_player2:
+		$Sprite2D.color_key = Globals.ColorFlag.RED
+		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.RED]
+	else:
+		$Sprite2D.color_key = Globals.ColorFlag.NONE
+		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.NONE]
+	apply_name()
+
+func _on_renamed() -> void:
+	pass
+	# var _color: String = "Default"
+	# var _type: String = name
+	# if name.count(" ") > 0:
+	# 	_color = name.split(" ")[0]
+	# 	match _color:
+	# 		"Blue":
+	# 			$Sprite2D.color_key = Globals.ColorFlag.BLUE
+	# 		"Red":
+	# 			$Sprite2D.color_key = Globals.ColorFlag.RED
+	# 		"Both":
+	# 			$Sprite2D.color_key = Globals.ColorFlag.BOTH
+	# 		"None":
+	# 			$Sprite2D.color_key = Globals.ColorFlag.NONE
+	# 	_type = name.split(" ")[1]
+	# match _type:
+	# 	"Box":
+	# 		relationship_with_player1 = Relationship.MOVABLE
+	# 		relationship_with_player2 = Relationship.MOVABLE
+	# 	"Wall":
+	# 		relationship_with_player1 = Relationship.IMMOVABLE
+	# 		relationship_with_player2 = Relationship.IMMOVABLE
+	# 	"Player":
+	# 		relationship_with_player1 = Relationship.CONTROLLED
+	# 		relationship_with_player2 = Relationship.CONTROLLED
+	# 	_:
+	# 		relationship_with_player1 = Relationship.GHOST
+	# 		relationship_with_player2 = Relationship.GHOST
+	# $Label.text = _color + "\n" + _type
+	pass
 
 func _ready() -> void:
 	# Defer so TileMapLayer has finished positioning scene tiles (batched at end of frame)
 	apply_relationship_with_players()
 	apply_visibility_for_players()
 	call_deferred("_register_at_map_coords")
+	renamed.connect(_on_renamed)
 
 func _exit_tree() -> void:
 	_unregister_at_map_coords()
