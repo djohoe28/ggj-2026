@@ -1,3 +1,4 @@
+@tool
 extends Sprite2D
 
 @export var color_key: Globals.ColorFlag = Globals.ColorFlag.BOTH
