@@ -24,6 +24,7 @@ texture = SubResource("GradientTexture2D_wcjeu")
 script = ExtResource("3_7sg2j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477067392]
+visible = false
 shape = ExtResource("1_wcjeu")
 
 [node name="Label" type="Label" parent="." unique_id=149673527]
