@@ -13,6 +13,8 @@ fill_to = Vector2(0.984375, 1)
 [node name="RedWall" unique_id=818385959 instance=ExtResource("1_rfew6")]
 collision_layer = 2
 collision_mask = 2
+relationship_with_player1 = 2
+relationship_with_player2 = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2144106428]
 modulate = Color(1, 0, 0, 1)

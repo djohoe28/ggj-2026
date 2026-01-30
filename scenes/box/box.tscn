@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cy0d0eawwe6tb"]
 
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="1_3inec"]
-[ext_resource type="Script" uid="uid://c3k1vcedk3as3" path="res://scripts/movable.gd" id="1_ks2v0"]
+[ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scripts/entity.gd" id="1_ks2v0"]
 [ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="2_sok70"]
 
 [sub_resource type="Gradient" id="Gradient_ks2v0"]
@@ -15,6 +15,8 @@ fill_to = Vector2(0.984375, 1)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ks2v0")
+relationship_with_player1 = 1
+relationship_with_player2 = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700293775]
 texture = SubResource("GradientTexture2D_ks2v0")
