@@ -9,9 +9,9 @@ extends Node2D
 @onready var level_container: Node2D = $"./LevelContainer"
 
 func _ready() -> void:
-	Globals.update_color('blue', blue)
-	Globals.update_color('red', red)
-	Globals.update_color('both', both)
+	Globals.update_color(Globals.ColorFlag.BLUE, blue)
+	Globals.update_color(Globals.ColorFlag.RED, red)
+	Globals.update_color(Globals.ColorFlag.BOTH, both)
 	load_level()
 
 func _on_win_level() -> void:

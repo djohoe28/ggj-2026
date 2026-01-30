@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://x3mrguq6ovj2"]
+
+[ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scenes/entities/entity.gd" id="1_7agfi"]
+[ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="1_wcjeu"]
+[ext_resource type="Resource" uid="uid://m7rpovg3qen4" path="res://assets/movement_tween_properties.tres" id="2_7agfi"]
+[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="3_7sg2j"]
+
+[sub_resource type="Gradient" id="Gradient_ml14j"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wcjeu"]
+gradient = SubResource("Gradient_ml14j")
+fill_to = Vector2(1, 1)
+
+[node name="Entity" type="StaticBody2D" unique_id=1284932722]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_7agfi")
+relationship_with_player1 = 2
+relationship_with_player2 = 2
+tween_properties = ExtResource("2_7agfi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
+texture = SubResource("GradientTexture2D_wcjeu")
+script = ExtResource("3_7sg2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477067392]
+shape = ExtResource("1_wcjeu")

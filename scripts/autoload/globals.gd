@@ -11,10 +11,18 @@ var pusher_player_id: int = 1
 ## Level Designer: entities auto-register; use this only for debugging.
 var entity_at_coords: Dictionary = {}  # Vector2i -> Entity
 
-var colors := {
-	'red': Color.RED,
-	'blue': Color.BLUE,
-	'both': Color.BLACK
+enum ColorFlag {
+	NONE = 0,
+	RED = 1 << 0,
+	BLUE = 1 << 1,
+	BOTH = RED | BLUE
+}
+
+var color_settings := {
+	ColorFlag.NONE: Color.WHITE,
+	ColorFlag.RED: Color.RED,
+	ColorFlag.BLUE: Color.BLUE,
+	ColorFlag.BOTH: Color.BLACK
 }
 
 signal color_updated(str)
@@ -29,9 +37,9 @@ func get_entity_at(coords: Vector2i) -> Node:
 	return entity_at_coords.get(coords, null)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("restart"):
+	if InputMap.has_action("restart") and event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 
-func update_color(key: String, color: Color):
-	colors[key] = color
+func update_color(key: ColorFlag, color: Color):
+	color_settings[key] = color
 	color_updated.emit(key)

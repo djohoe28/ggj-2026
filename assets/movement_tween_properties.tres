@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TweenProperties" format=3 uid="uid://m7rpovg3qen4"]
+
+[ext_resource type="Script" uid="uid://btjqee0rwuq6s" path="res://scripts/resources/tween_properties.gd" id="1_j4rna"]
+
+[resource]
+script = ExtResource("1_j4rna")
+duration = 0.15
+ease_type = 1
+transition_type = 2
+metadata/_custom_type_script = "uid://btjqee0rwuq6s"
