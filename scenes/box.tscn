@@ -1,22 +1,27 @@
 [gd_scene format=3 uid="uid://cy0d0eawwe6tb"]
 
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="1_3inec"]
+[ext_resource type="Script" uid="uid://c3k1vcedk3as3" path="res://scripts/movable.gd" id="1_ks2v0"]
 
-[sub_resource type="Gradient" id="Gradient_3inec"]
+[sub_resource type="Gradient" id="Gradient_ks2v0"]
 colors = PackedColorArray(0.63529414, 0.5019608, 0.4, 1, 0.9529412, 0.7058824, 0.5294118, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ks2v0"]
-gradient = SubResource("Gradient_3inec")
+gradient = SubResource("Gradient_ks2v0")
 fill_from = Vector2(0.074652776, 0.07118055)
 fill_to = Vector2(0.984375, 1)
 
-[node name="Box" type="StaticBody2D" unique_id=18686666 groups=["Pushable"]]
+[node name="Box" type="StaticBody2D" unique_id=18686666]
+script = ExtResource("1_ks2v0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700293775]
 texture = SubResource("GradientTexture2D_ks2v0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1953014327]
 shape = ExtResource("1_3inec")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1142458690]
+target_position = Vector2(0, 64)
 
 [node name="Label" type="Label" parent="." unique_id=693997962]
 anchors_preset = 15
