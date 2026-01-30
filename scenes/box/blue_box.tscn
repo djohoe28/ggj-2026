@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://8sgwmh4myah"]
 
 [ext_resource type="PackedScene" uid="uid://cy0d0eawwe6tb" path="res://scenes/box/box.tscn" id="1_8sw3h"]
+[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/blue_only.gd" id="2_rr3v0"]
 
 [sub_resource type="Gradient" id="Gradient_rt1d6"]
-colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rr3v0"]
 gradient = SubResource("Gradient_rt1d6")
-fill_to = Vector2(0.984375, 1)
+fill_to = Vector2(0.008695652, 0)
 
 [node name="BlueBox" unique_id=18686666 instance=ExtResource("1_8sw3h")]
 collision_layer = 1
 collision_mask = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=1700293775]
+modulate = Color(0.14370939, 0.37859228, 0.99999875, 1)
 texture = SubResource("GradientTexture2D_rr3v0")
-
-[node name="RayCast2D" parent="." index="2" unique_id=1142458690]
-collision_mask = 3
+script = ExtResource("2_rr3v0")
 
 [node name="Label" parent="." index="3" unique_id=693997962]
 text = "Blue

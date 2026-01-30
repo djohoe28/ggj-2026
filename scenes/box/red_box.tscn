@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c44hrx343jngh"]
 
 [ext_resource type="PackedScene" uid="uid://cy0d0eawwe6tb" path="res://scenes/box/box.tscn" id="1_5prn8"]
+[ext_resource type="Script" uid="uid://bj02u3namqdh" path="res://scripts/red_only.gd" id="2_urbqk"]
 
 [sub_resource type="Gradient" id="Gradient_x1yac"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_urbqk"]
 gradient = SubResource("Gradient_x1yac")
@@ -14,7 +15,9 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=1700293775]
+modulate = Color(1, 0, 0, 1)
 texture = SubResource("GradientTexture2D_urbqk")
+script = ExtResource("2_urbqk")
 
 [node name="RayCast2D" parent="." index="2" unique_id=1142458690]
 collision_mask = 2

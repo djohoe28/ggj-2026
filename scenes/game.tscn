@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://rlv0umd7rnq7"]
 
 [ext_resource type="TileSet" uid="uid://drb7k0754qprm" path="res://assets/tile_set.tres" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://duusk8mnnqfo7" path="res://scripts/game.gd" id="1_yqjtg"]
 
 [node name="Game" type="Node2D" unique_id=1227616372]
+script = ExtResource("1_yqjtg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1934974460]
 position = Vector2(-1, -1)
