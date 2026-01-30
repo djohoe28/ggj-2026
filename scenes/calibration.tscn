@@ -1,0 +1,43 @@
+[gd_scene format=4 uid="uid://q1xf6auc6u0v"]
+
+[ext_resource type="TileSet" uid="uid://drb7k0754qprm" path="res://assets/tile_set.tres" id="1_83oql"]
+[ext_resource type="Script" uid="uid://b3b5vrhlrl65y" path="res://scenes/calibration.gd" id="1_e5k65"]
+[ext_resource type="PackedScene" uid="uid://ct1n0tss4fb3" path="res://scenes/slider_set.tscn" id="2_qsgpr"]
+
+[node name="Calibration" type="Node2D" unique_id=914478125]
+script = ExtResource("1_e5k65")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=766347900]
+tile_map_data = PackedByteArray("AAAMAAQAAAAAAAAABQAEAAQAAAAAAAAABAANAAQAAAAAAAAABQAFAAQAAAAAAAAABAAMAAUAAAAAAAAABQANAAUAAAAAAAAABQAEAAUAAAAAAAAABAAFAAUAAAAAAAAABAAIAAEAAAAAAAAAAQAJAAEAAAAAAAAAAQAJAAIAAAAAAAAAAQAIAAIAAAAAAAAAAQA=")
+tile_set = ExtResource("1_83oql")
+
+[node name="Control" type="CanvasLayer" parent="." unique_id=422818143]
+
+[node name="Button" type="Button" parent="Control" unique_id=2143231958]
+offset_left = 448.0
+offset_top = 512.0
+offset_right = 704.0
+offset_bottom = 576.0
+text = "סיימנו"
+
+[node name="SliderSet" parent="Control" unique_id=806489789 instance=ExtResource("2_qsgpr")]
+offset_left = 768.0
+offset_top = 448.0
+offset_right = 768.0
+offset_bottom = 448.0
+
+[node name="SliderSet3" parent="Control" unique_id=1029623936 instance=ExtResource("2_qsgpr")]
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 256.0
+color_key = "both"
+
+[node name="SliderSet2" parent="Control" unique_id=2103507201 instance=ExtResource("2_qsgpr")]
+offset_left = 256.0
+offset_top = 448.0
+offset_right = 256.0
+offset_bottom = 448.0
+color_key = "red"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

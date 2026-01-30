@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ct1n0tss4fb3"]
+
+[ext_resource type="Script" uid="uid://d2qpirwx2mdqh" path="res://scenes/slider_set.gd" id="1_icnqq"]
+
+[node name="SliderSet" type="Control" unique_id=806489789]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_icnqq")
+
+[node name="HSlider1" type="HSlider" parent="." unique_id=236419700]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 360.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider2" type="HSlider" parent="." unique_id=572192002]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 80.0
+max_value = 255.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider3" type="HSlider" parent="." unique_id=462671915]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 144.0
+max_value = 255.0
+metadata/_edit_use_anchors_ = true

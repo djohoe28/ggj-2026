@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Globals="*uid://bgssrwoeg1lbe"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
