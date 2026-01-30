@@ -9,18 +9,41 @@ signal pushed(player: Player, collider: Movable, direction: Vector2)
 
 #endregion
 
+enum PlayerID {
+	P1 = 1,
+	P2 = 2
+}
+
+const P1ActionToVector = {
+	"p1_left": Vector2.LEFT,
+	"p1_right": Vector2.RIGHT,
+	"p1_up": Vector2.UP,
+	"p1_down": Vector2.DOWN
+}
+
+const P2ActionToVector = {
+	"p2_left": Vector2.LEFT,
+	"p2_right": Vector2.RIGHT,
+	"p2_up": Vector2.UP,
+	"p2_down": Vector2.DOWN
+}
+
+## Mapping of input actions to movement vectors
+@onready var action_to_vector = P1ActionToVector if player_id == PlayerID.P1 else P2ActionToVector
+
+@export var player_id: PlayerID = PlayerID.P1:
+	set(value):
+		player_id = value
+		apply_player_id()
+
+func apply_player_id():
+	action_to_vector = P1ActionToVector if player_id == PlayerID.P1 else P2ActionToVector
+
+
 #region Properties
 
 ## If true, the player will move into the space after successfully pushing an object.
 @export var moves_after_push: bool = true
-
-## Mapping of input actions to movement vectors
-@export var ActionToVector = {
-	"ui_left": Vector2.LEFT,
-	"ui_right": Vector2.RIGHT,
-	"ui_up": Vector2.UP,
-	"ui_down": Vector2.DOWN
-}
 
 #endregion
 
@@ -70,9 +93,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if is_moving:
 		return
 	
-	for action in ActionToVector:
+	for action in action_to_vector:
 		if Input.is_action_just_pressed(action):
-			queued_direction = ActionToVector[action]
+			queued_direction = action_to_vector[action]
 			break
 
 func _physics_process(_delta: float) -> void:
