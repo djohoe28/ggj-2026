@@ -61,3 +61,8 @@ func can_move(direction: Vector2) -> bool:
 		return true
 	
 	return false
+
+# DEBUGGING
+# TODO: Hard-set this in the Editor?
+func _ready() -> void:
+	$RayCast2D.collision_mask = collision_layer
