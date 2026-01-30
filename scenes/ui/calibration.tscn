@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://q1xf6auc6u0v"]
 
 [ext_resource type="TileSet" uid="uid://drb7k0754qprm" path="res://assets/tile_set.tres" id="1_83oql"]
-[ext_resource type="Script" uid="uid://b3b5vrhlrl65y" path="res://scenes/calibration.gd" id="1_e5k65"]
-[ext_resource type="PackedScene" uid="uid://ct1n0tss4fb3" path="res://scenes/slider_set.tscn" id="2_qsgpr"]
+[ext_resource type="Script" uid="uid://b3b5vrhlrl65y" path="res://scenes/ui/calibration.gd" id="1_e5k65"]
+[ext_resource type="PackedScene" uid="uid://ct1n0tss4fb3" path="res://scenes/ui/slider_set.tscn" id="2_qsgpr"]
 
 [node name="Calibration" type="Node2D" unique_id=914478125]
 script = ExtResource("1_e5k65")

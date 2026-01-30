@@ -20,9 +20,6 @@ texture = SubResource("GradientTexture2D_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138204774]
 shape = ExtResource("2_g2els")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=585140240]
-target_position = Vector2(0, 64)
-
 [node name="Label" type="Label" parent="." unique_id=1845525881]
 anchors_preset = 15
 anchor_right = 1.0

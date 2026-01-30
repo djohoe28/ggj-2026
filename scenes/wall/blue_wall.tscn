@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cid7uxfvne0q6"]
 
 [ext_resource type="PackedScene" uid="uid://dod73k1pvfrlr" path="res://scenes/wall/wall.tscn" id="1_602iq"]
+[ext_resource type="Script" path="res://scripts/color_only.gd" id="2_01igv"]
 
 [sub_resource type="Gradient" id="Gradient_602iq"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -13,12 +14,11 @@ fill_to = Vector2(0.984375, 1)
 [node name="BlueWall" unique_id=818385959 instance=ExtResource("1_602iq")]
 collision_layer = 1
 collision_mask = 1
-relationship_with_player1 = 0
-relationship_with_player2 = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=2144106428]
 modulate = Color(0, 0, 1, 1)
 texture = SubResource("GradientTexture2D_01igv")
+script = ExtResource("2_01igv")
 color_key = "blue"
 
 [node name="Label" parent="." index="2" unique_id=1787512896]
