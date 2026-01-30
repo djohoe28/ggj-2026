@@ -1,17 +1,44 @@
 extends Movable
 class_name Player
 
+#region Signals
+
+## The Player has successfully pushed a Movable object.
 signal pushed(player: Player, collider: Movable, direction: Vector2)
 
+#endregion
+
+#region Properties
+
+## If true, the player will move into the space after successfully pushing an object.
 @export var moves_after_push: bool = true
 
+#endregion
+
+#region Constants
+# Mapping of input actions to movement vectors
 const ActionToVector = {
 	"ui_left": Vector2.LEFT,
 	"ui_right": Vector2.RIGHT,
 	"ui_up": Vector2.UP,
 	"ui_down": Vector2.DOWN
 }
+#endregion
 
+#region Variables
+
+## Queue for movement input (to be processed after physics update)
+var queued_direction: Vector2 = Vector2.ZERO
+
+## Flag to indicate if the player is currently moving
+var is_moving: bool = false
+
+#endregion
+
+#region Overrides
+
+## Attempt to move the Player in the specified direction.
+## NOTE: This overrides the base Movable `try_move` to add push logic.
 func try_move(direction: Vector2) -> bool:
 	# Check for collision
 	$RayCast2D.target_position = direction * Globals.TILE_SIZE
@@ -34,7 +61,24 @@ func try_move(direction: Vector2) -> bool:
 	blocked.emit(self, collider, direction)
 	return false
 
+## Handle unhandled input for movement queuing
 func _unhandled_input(_event: InputEvent) -> void:
+	# Only queue input if not currently moving
+	if is_moving:
+		return
+	
 	for action in ActionToVector:
 		if Input.is_action_just_pressed(action):
-			try_move(ActionToVector[action])
+			queued_direction = ActionToVector[action]
+			break
+
+## Process queued movement after physics update
+func _physics_process(_delta: float) -> void:
+	# Process queued movement after physics update
+	if queued_direction != Vector2.ZERO and not is_moving:
+		is_moving = true
+		try_move(queued_direction)
+		queued_direction = Vector2.ZERO
+		is_moving = false
+
+#endregion
