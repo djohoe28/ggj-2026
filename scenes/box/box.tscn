@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://c3k1vcedk3as3" path="res://scripts/movable.gd" id="1_ks2v0"]
 
 [sub_resource type="Gradient" id="Gradient_ks2v0"]
-colors = PackedColorArray(0.63529414, 0.5019608, 0.4, 1, 0.9529412, 0.7058824, 0.5294118, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ks2v0"]
 gradient = SubResource("Gradient_ks2v0")
-fill_from = Vector2(0.074652776, 0.07118055)
 fill_to = Vector2(0.984375, 1)
 
 [node name="Box" type="StaticBody2D" unique_id=18686666]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ks2v0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700293775]

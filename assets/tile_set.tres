@@ -1,13 +1,25 @@
 [gd_resource type="TileSet" format=3 uid="uid://drb7k0754qprm"]
 
-[ext_resource type="PackedScene" uid="uid://cy0d0eawwe6tb" path="res://scenes/box.tscn" id="1_ki5qi"]
-[ext_resource type="PackedScene" uid="uid://dod73k1pvfrlr" path="res://scenes/wall.tscn" id="2_b4n3o"]
-[ext_resource type="PackedScene" uid="uid://dm6qoe57l87ub" path="res://scenes/player.tscn" id="3_b4n3o"]
+[ext_resource type="PackedScene" uid="uid://cy0d0eawwe6tb" path="res://scenes/box/box.tscn" id="1_ki5qi"]
+[ext_resource type="PackedScene" uid="uid://dod73k1pvfrlr" path="res://scenes/wall/wall.tscn" id="2_b4n3o"]
+[ext_resource type="PackedScene" uid="uid://dm6qoe57l87ub" path="res://scenes/player/player.tscn" id="3_b4n3o"]
+[ext_resource type="PackedScene" uid="uid://8sgwmh4myah" path="res://scenes/box/blue_box.tscn" id="4_prmj7"]
+[ext_resource type="PackedScene" uid="uid://c44hrx343jngh" path="res://scenes/box/red_box.tscn" id="5_dixdc"]
+[ext_resource type="PackedScene" uid="uid://bjw7uehdf6pfd" path="res://scenes/player/blue_player.tscn" id="6_581ag"]
+[ext_resource type="PackedScene" uid="uid://dakxpkm0jvd3s" path="res://scenes/player/red_player.tscn" id="7_uic34"]
+[ext_resource type="PackedScene" uid="uid://cid7uxfvne0q6" path="res://scenes/wall/blue_wall.tscn" id="8_5e0im"]
+[ext_resource type="PackedScene" uid="uid://b5i1honajm5t0" path="res://scenes/wall/red_wall.tscn" id="9_6i0mp"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u6000"]
 scenes/1/scene = ExtResource("1_ki5qi")
 scenes/2/scene = ExtResource("2_b4n3o")
 scenes/3/scene = ExtResource("3_b4n3o")
+scenes/4/scene = ExtResource("4_prmj7")
+scenes/5/scene = ExtResource("5_dixdc")
+scenes/6/scene = ExtResource("6_581ag")
+scenes/7/scene = ExtResource("7_uic34")
+scenes/8/scene = ExtResource("8_5e0im")
+scenes/9/scene = ExtResource("9_6i0mp")
 
 [resource]
 tile_size = Vector2i(64, 64)

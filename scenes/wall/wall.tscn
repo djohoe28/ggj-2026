@@ -3,7 +3,7 @@
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="1_wykyb"]
 
 [sub_resource type="Gradient" id="Gradient_3inec"]
-colors = PackedColorArray(0, 0, 0, 1, 0.9529412, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2ktk7"]
 gradient = SubResource("Gradient_3inec")
@@ -11,6 +11,8 @@ fill_from = Vector2(0.074652776, 0.07118055)
 fill_to = Vector2(0.984375, 1)
 
 [node name="Wall" type="StaticBody2D" unique_id=818385959]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144106428]
 texture = SubResource("GradientTexture2D_2ktk7")

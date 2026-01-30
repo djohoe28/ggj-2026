@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b5i1honajm5t0"]
+
+[ext_resource type="PackedScene" uid="uid://dod73k1pvfrlr" path="res://scenes/wall/wall.tscn" id="1_rfew6"]
+
+[sub_resource type="Gradient" id="Gradient_rfew6"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_minyg"]
+gradient = SubResource("Gradient_rfew6")
+fill_to = Vector2(0.984375, 1)
+
+[node name="RedWall" unique_id=818385959 instance=ExtResource("1_rfew6")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" parent="." index="0" unique_id=2144106428]
+texture = SubResource("GradientTexture2D_minyg")
+
+[node name="Label" parent="." index="2" unique_id=1787512896]
+text = "Red
+Wall"
