@@ -4,8 +4,21 @@
 [ext_resource type="Script" uid="uid://duusk8mnnqfo7" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://q1xf6auc6u0v" path="res://scenes/calibration.tscn" id="3_lnu2h"]
 
+[sub_resource type="Gradient" id="Gradient_lnu2h"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lbhrr"]
+gradient = SubResource("Gradient_lnu2h")
+
 [node name="Game" type="Node2D" unique_id=1227616372]
 script = ExtResource("1_yqjtg")
+blue = Color(0.637, 1.8, 1.82, 1)
+red = Color(1.18, 0.72, 0.996, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913173648]
+position = Vector2(576, 319.75)
+scale = Vector2(4.5, 640.49994)
+texture = SubResource("GradientTexture1D_lbhrr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1934974460]
 visible = false
