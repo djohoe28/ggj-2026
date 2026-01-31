@@ -44,12 +44,6 @@ func count_controlled_entities() -> int:
 			count += 1
 	return count
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
-
 func update_color(color_flag: ColorFlag, color: Color) -> void:
 	colors[color_flag] = color
 	color_updated.emit(color_flag)

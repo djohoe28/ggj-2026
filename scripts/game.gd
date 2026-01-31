@@ -27,3 +27,11 @@ func load_level() -> void:
 	for child in level_container.get_children():
 		child.queue_free()
 	level_container.add_child(level)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
+	if (event.is_action_pressed("restart1") or event.is_action_pressed("restart2")) and Input.is_action_pressed("restart1") and Input.is_action_pressed("restart2"):
+		load_level()
+	if event.is_action_pressed("debug"):
+		_on_win_level()

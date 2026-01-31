@@ -1,0 +1,13 @@
+extends Label
+
+@export var color_key: Globals.ColorFlag = Globals.ColorFlag.RED
+
+func _ready() -> void:
+	# modulate = Globals.colors[color_key]
+	add_theme_color_override("font_color", Globals.colors[color_key])
+	Globals.color_updated.connect(_on_update_color)
+
+func _on_update_color(color: Globals.ColorFlag) -> void:
+	if color == color_key:
+		add_theme_color_override("font_color", Globals.colors[color_key])
+		# modulate = Globals.colors[color_key]

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://m0llwljilnoa"]
+
+[ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scenes/entities/entity.gd" id="1_m6ocd"]
+[ext_resource type="Resource" uid="uid://e37gox3u4f5c" path="res://assets/position_tween_properties.tres" id="2_ugbvp"]
+[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://p1_shader.tres" id="3_jbbjg"]
+[ext_resource type="Texture2D" uid="uid://4x3ergmtnymb" path="res://assets/tileset_mockup (2).png" id="4_inmot"]
+[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="5_71skx"]
+[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://p2_shader.tres" id="6_cfu6x"]
+[ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="7_m6rdx"]
+[ext_resource type="LabelSettings" uid="uid://byc8yqo5vl517" path="res://assets/debug_label_settings.tres" id="8_tjka1"]
+[ext_resource type="AudioStream" uid="uid://3tra5r28g224" path="res://assets/sfx/step.ogg" id="9_myiph"]
+[ext_resource type="AudioStream" uid="uid://dl3sj8lbgu67b" path="res://assets/sfx/push.ogg" id="10_atr2o"]
+[ext_resource type="AudioStream" uid="uid://hf41qc0wtxgy" path="res://assets/sfx/blocked.ogg" id="11_3byka"]
+[ext_resource type="AudioStream" uid="uid://dl3sk3a1end47" path="res://assets/sfx/exit.ogg" id="12_k76x6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_366ky"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("9_myiph")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2213q"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("10_atr2o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8oa18"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("11_3byka")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hm1p4"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("12_k76x6")
+
+[node name="Wall" type="StaticBody2D" unique_id=1284932722]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_m6ocd")
+tween_properties = ExtResource("2_ugbvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
+modulate = Color(0.21568628, 0.9882353, 1, 1)
+material = ExtResource("3_jbbjg")
+texture = ExtResource("4_inmot")
+hframes = 5
+vframes = 7
+frame = 23
+script = ExtResource("5_71skx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1591089347]
+modulate = Color(1, 0.76862746, 0.98039216, 1)
+material = ExtResource("6_cfu6x")
+texture = ExtResource("4_inmot")
+hframes = 5
+vframes = 7
+frame = 24
+script = ExtResource("5_71skx")
+color_key = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477067392]
+visible = false
+shape = ExtResource("7_m6rdx")
+
+[node name="Label" type="Label" parent="." unique_id=149673527]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wall"
+label_settings = ExtResource("8_tjka1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1743374138]
+collision_mask = 7
+
+[node name="MoveSFX" type="AudioStreamPlayer2D" parent="." unique_id=2092258280]
+stream = SubResource("AudioStreamRandomizer_366ky")
+volume_db = 24.0
+
+[node name="PushSFX" type="AudioStreamPlayer2D" parent="." unique_id=2103750107]
+stream = SubResource("AudioStreamRandomizer_2213q")
+volume_db = 24.0
+
+[node name="BlockSFX" type="AudioStreamPlayer2D" parent="." unique_id=573005244]
+stream = SubResource("AudioStreamRandomizer_8oa18")
+volume_db = 24.0
+
+[node name="ExitSFX" type="AudioStreamPlayer2D" parent="." unique_id=1984449606]
+stream = SubResource("AudioStreamRandomizer_hm1p4")
+volume_db = 24.0

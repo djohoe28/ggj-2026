@@ -8,12 +8,17 @@
 collision_layer = 7
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
+modulate = Color(0.21568628, 0.9882353, 1, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hrryp")
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
+modulate = Color(1, 0.76862746, 0.98039216, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("3_sm85l")
 
 [node name="Label" parent="." index="3" unique_id=149673527]
 visible = false
+
+[node name="RayCast2D" parent="." index="4" unique_id=1743374138]
+enabled = false
