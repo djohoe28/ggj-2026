@@ -177,6 +177,9 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	if escaped:
 		return  # Never registered at current position; unregister would erase the Goal
+	# Only unregister if we're the entity at this coord (MOVABLE on Goal never registered)
+	if Globals.get_entity_at(get_map_coords()) != self:
+		return
 	_unregister_at_map_coords()
 
 ## Returns the TileMapLayer this Entity lives in (parent).
@@ -271,7 +274,8 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	var my_coords := get_map_coords()
 	var new_coords := layer.get_neighbor_cell(my_coords, direction)
 	var neighbor := Globals.get_entity_at(new_coords) as Entity
-	var is_moving_into_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled()
+	var neighbor_is_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL
+	var is_moving_into_goal := neighbor_is_goal and _is_controlled()
 
 	# Push MOVABLE neighbor first (recursive chain: farthest entity moves first)
 	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.MOVABLE:
@@ -284,7 +288,8 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 
 	# Now move self
 	Globals.unregister_entity(my_coords)
-	if not is_moving_into_goal:
+	# Don't register when moving into a Goal (keeps Goal in registry for subsequent Players)
+	if not neighbor_is_goal:
 		Globals.register_entity(new_coords, self)
 
 	var target_position := layer.map_to_local(new_coords)
