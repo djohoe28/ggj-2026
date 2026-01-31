@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bgoal0000007" path="res://scenes/entities/tiles/Goal.tscn" id="7_goal"]
 [ext_resource type="PackedScene" uid="uid://b7yqrtrotu1b2" path="res://scenes/entities/tiles/P1_Box_V1.tscn" id="8_prmj7"]
 [ext_resource type="PackedScene" uid="uid://bc0n3n8i11gue" path="res://scenes/entities/tiles/P1_Box_V2.tscn" id="9_dixdc"]
+[ext_resource type="PackedScene" uid="uid://snmpsqakwp3b" path="res://scenes/entities/tiles/Box_V1.tscn" id="12_5e0im"]
+[ext_resource type="PackedScene" uid="uid://c4tp7madxkkbc" path="res://scenes/entities/tiles/Box_V2.tscn" id="13_6i0mp"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5e0im"]
 scenes/1/scene = ExtResource("5_p1body")
@@ -20,10 +22,12 @@ scenes/4/scene = ExtResource("1_wall")
 scenes/5/scene = ExtResource("2_box")
 scenes/6/scene = ExtResource("3_p1box")
 scenes/7/scene = ExtResource("4_p2box")
-scenes/8/scene = ExtResource("8_prmj7")
-scenes/9/scene = ExtResource("9_dixdc")
-scenes/10/scene = ExtResource("2_581ag")
-scenes/11/scene = ExtResource("3_uic34")
+scenes/8/scene = ExtResource("12_5e0im")
+scenes/9/scene = ExtResource("13_6i0mp")
+scenes/10/scene = ExtResource("8_prmj7")
+scenes/11/scene = ExtResource("9_dixdc")
+scenes/12/scene = ExtResource("2_581ag")
+scenes/13/scene = ExtResource("3_uic34")
 
 [resource]
 tile_size = Vector2i(60, 60)

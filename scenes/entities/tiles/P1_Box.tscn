@@ -7,5 +7,5 @@ collision_layer = 7
 entity_kind = 2
 
 [node name="Label" parent="." index="2" unique_id=149673527]
-text = "P1
-Box"
+text = "P1 Movable
+Visible"

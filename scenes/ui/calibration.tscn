@@ -8,7 +8,7 @@
 script = ExtResource("1_e5k65")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=766347900]
-tile_map_data = PackedByteArray()
+tile_map_data = PackedByteArray("AAAJAAEAAAAAAAAABQAKAAIAAAAAAAAABQAKAAEAAAAAAAAACAAJAAIAAAAAAAAACQAPAAQAAAAAAAAABwAQAAUAAAAAAAAABwAQAAQAAAAAAAAADAAPAAUAAAAAAAAADQAEAAUAAAAAAAAACwAFAAUAAAAAAAAABgAEAAQAAAAAAAAABgAFAAQAAAAAAAAACgA=")
 tile_set = ExtResource("1_83oql")
 
 [node name="Control" type="CanvasLayer" parent="." unique_id=422818143]
