@@ -43,3 +43,6 @@ Ghost"
 label_settings = ExtResource("5_366ky")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1743374138]
+collision_mask = 7

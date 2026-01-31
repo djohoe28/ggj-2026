@@ -118,29 +118,21 @@ func apply_name() -> void:
 	$Label.text = description.replace(" ", "\n")
 
 func apply_relationship_with_players() -> void:
-	match relationship_with_player1:
-		Relationship.GHOST:
-			# Remove from Collision Layer 1.
-			set_collision_layer_value(1, false)
-			set_collision_mask_value(1, false)
-		Relationship.MOVABLE, Relationship.IMMOVABLE, Relationship.CONTROLLED:
-			# Add to Collision Layer 1.
-			set_collision_layer_value(1, true)
-			set_collision_mask_value(1, true)
-	match relationship_with_player2:
-		Relationship.GHOST:
-			# Remove from Collision Layer 2.
-			set_collision_layer_value(2, false)
-			set_collision_mask_value(2, false)
-		Relationship.MOVABLE, Relationship.IMMOVABLE, Relationship.CONTROLLED:
-			# Add to Collision Layer 2.
-			set_collision_layer_value(2, true)
-			set_collision_mask_value(2, true)
-	var is_controlled: bool = relationship_with_player1 == Relationship.CONTROLLED or relationship_with_player2 == Relationship.CONTROLLED
-	var is_ghost: bool = relationship_with_player1 == Relationship.GHOST and relationship_with_player2 == Relationship.GHOST
-	var is_solid: bool = !is_controlled and !is_ghost
-	set_collision_layer_value(3, is_solid)
-	set_collision_mask_value(3, is_solid)
+	# Initialize all layers and masks to true
+	for i in range(1, 4):
+		set_collision_layer_value(i, true)
+		set_collision_mask_value(i, true)
+	# Remove Player masks
+	if relationship_with_player1 == Relationship.CONTROLLED:
+		set_collision_mask_value(1, false)
+	if relationship_with_player2 == Relationship.CONTROLLED:
+		set_collision_mask_value(2, false)
+	# Remove Ghost layers
+	if relationship_with_player1 == Relationship.GHOST:
+		set_collision_layer_value(2, false)
+	if relationship_with_player2 == Relationship.GHOST:
+		set_collision_layer_value(1, false)
+	$RayCast2D.collision_mask = collision_mask
 	apply_name()
 
 func apply_visibility_for_players() -> void:
@@ -194,6 +186,7 @@ func _ready() -> void:
 	# Defer so TileMapLayer has finished positioning scene tiles (batched at end of frame)
 	apply_relationship_with_players()
 	apply_visibility_for_players()
+	await get_tree().process_frame
 	call_deferred("_register_at_map_coords")
 	renamed.connect(_on_renamed)
 
@@ -227,6 +220,7 @@ func _get_relationship_for_pusher(pusher_player_id: int) -> Relationship:
 	return relationship_with_player1 if pusher_player_id == 1 else relationship_with_player2
 
 ## Iteratively checks whether self can move in the given direction.
+## Uses $RayCast2D with collision_mask aligned to pusher (GHOST/CONTROLLED-by-same-player excluded).
 ## pusher_player_id: 1 = Blue (P1), 2 = Red (P2) — determines which relationship to use for neighbors.
 func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> bool:
 	if current_tween != null and current_tween.is_valid():
@@ -236,22 +230,38 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 	if layer == null:
 		return false
 
-	var my_coords := get_map_coords()
-	var neighbor_coords := layer.get_neighbor_cell(my_coords, direction)
+	var ray := $RayCast2D
+	if ray == null:
+		return false
 
-	# Check if neighbor cell has an entity
-	var neighbor := Globals.get_entity_at(neighbor_coords) as Entity
+	# Configure RayCast: aim in direction, length = one tile
+	var tile_size := Vector2(64, 64)
+	if layer.tile_set != null:
+		tile_size = Vector2(layer.tile_set.tile_size)
+	var dir_vec := cell_neighbor_to_vector(direction) * tile_size
+	ray.target_position = dir_vec
+
+	# Mask matches apply_relationship_with_players: exclude same-player (CONTROLLED pass-through)
+	# Layer 1 = P1, Layer 2 = P2. CONTROLLED entities set mask 1/2 false for their controller.
+	var ray_mask := 7  # layers 1, 2, 3
+	if pusher_player_id == 1:
+		ray_mask = 6  # exclude layer 1 — don't detect P1-controlled (same-player pass-through)
+	elif pusher_player_id == 2:
+		ray_mask = 5  # exclude layer 2 — don't detect P2-controlled
+	ray.collision_mask = ray_mask
+	ray.force_raycast_update()
+
+	if not ray.is_colliding():
+		return true
+
+	var collider = ray.get_collider()
+	var neighbor := collider as Entity
 	if neighbor == null:
-		return true # Empty cell — can move
+		return false  # Hit non-Entity (e.g. tilemap collision)
 
-	var rel := neighbor._get_relationship_for_pusher(pusher_player_id)
-	match rel:
-		Relationship.GHOST:
-			return true
-		Relationship.IMMOVABLE, Relationship.CONTROLLED:
-			return false
-		Relationship.MOVABLE:
-			return neighbor.can_move(direction, pusher_player_id)
+	# Only MOVABLE can be pushed; IMMOVABLE blocks. GHOST/same-player CONTROLLED excluded by mask.
+	if neighbor._get_relationship_for_pusher(pusher_player_id) == Relationship.MOVABLE:
+		return neighbor.can_move(direction, pusher_player_id)
 	return false
 
 ## Moves self within the TileMapLayer and tweens the sprite to the new position.
