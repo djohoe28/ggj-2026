@@ -1,9 +1,25 @@
 [gd_scene format=3 uid="uid://bp2body00006"]
 
 [ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_entity"]
+[ext_resource type="Texture2D" uid="uid://c4bv1le2fxew5" path="res://assets/graphics/lowres/country-mouse-city.png" id="2_xhdjh"]
+[ext_resource type="Texture2D" uid="uid://cmyoi5owf6sq" path="res://assets/graphics/lowres/country-mouse-country.png" id="3_mlaao"]
 
-[node name="P2_Body" unique_id=1284932722 instance=ExtResource("1_entity")]
+[node name="P2 Body" unique_id=1284932722 instance=ExtResource("1_entity")]
+collision_layer = 7
+collision_mask = 5
 entity_kind = 5
 
-[node name="Label" parent="." index="2" unique_id=149673527]
+[node name="Sprite2D" parent="." index="0" unique_id=360626508]
+scale = Vector2(2, 2)
+texture = ExtResource("2_xhdjh")
+
+[node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
+scale = Vector2(2, 2)
+texture = ExtResource("3_mlaao")
+
+[node name="Label" parent="." index="3" unique_id=149673527]
+visible = false
 text = "Player 2"
+
+[node name="RayCast2D" parent="." index="4" unique_id=1743374138]
+collision_mask = 5

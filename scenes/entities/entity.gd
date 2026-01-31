@@ -130,14 +130,14 @@ func apply_from_kind() -> void:
 	if entity_kind == EntityKind.P2_BODY:
 		set_collision_mask_value(2, false)
 	$RayCast2D.collision_mask = collision_mask
-	# Color: P1_BODY=Blue, P2_BODY=Red, others=Both
-	match entity_kind:
-		EntityKind.P1_BODY:
-			$Sprite2D.color_key = Globals.ColorFlag.BLUE
-		EntityKind.P2_BODY:
-			$Sprite2D.color_key = Globals.ColorFlag.RED
-		_:
-			$Sprite2D.color_key = Globals.ColorFlag.BOTH
+	# # Color: P1_BODY=Blue, P2_BODY=Red, others=Both
+	# match entity_kind:
+	# 	EntityKind.P1_BODY:
+	# 		$Sprite2D.color_key = Globals.ColorFlag.BLUE
+	# 	EntityKind.P2_BODY:
+	# 		$Sprite2D.color_key = Globals.ColorFlag.RED
+	# 	_:
+	# 		$Sprite2D.color_key = Globals.ColorFlag.BOTH
 
 func _on_renamed() -> void:
 	pass

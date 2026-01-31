@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cy5axmhrdqfjn"]
+
+[ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_mmej7"]
+[ext_resource type="Texture2D" uid="uid://b0ra1a3iwoxas" path="res://assets/graphics/lowres/blank.png" id="2_6txx4"]
+
+[sub_resource type="Gradient" id="Gradient_6txx4"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mmej7"]
+gradient = SubResource("Gradient_6txx4")
+
+[node name="Box" unique_id=1284932722 instance=ExtResource("1_mmej7")]
+collision_layer = 7
+entity_kind = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=360626508]
+texture = ExtResource("2_6txx4")
+
+[node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
+position = Vector2(3.8146973e-06, 9.536743e-07)
+scale = Vector2(0.23437501, 59.999996)
+texture = SubResource("GradientTexture1D_mmej7")
+
+[node name="Label" parent="." index="3" unique_id=149673527]
+visible = false
+offset_left = -9.5
+offset_top = -8.0
+offset_right = 9.5
+offset_bottom = 6.0
+text = "Movable
+Visible"

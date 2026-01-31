@@ -13,8 +13,8 @@ gradient = SubResource("Gradient_lnu2h")
 [node name="Game" type="Node2D" unique_id=1227616372]
 script = ExtResource("1_yqjtg")
 none = Color(1, 1, 1, 1)
-blue = Color(0.21568628, 0.9882353, 1, 1)
-red = Color(1, 0.76862746, 0.98039216, 1)
+blue = Color(0.39215687, 0.9882353, 1, 1)
+red = Color(1, 0.76862746, 1, 1)
 levels = Array[PackedScene]([ExtResource("2_lnu2h"), ExtResource("3_lbhrr")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=829129142]

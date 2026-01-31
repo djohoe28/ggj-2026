@@ -1,7 +1,7 @@
 @tool
 extends Sprite2D
 
-@export var color_key: Globals.ColorFlag = Globals.ColorFlag.BOTH
+@export var color_key: Globals.ColorFlag = Globals.ColorFlag.RED
 
 func _ready() -> void:
 	modulate = Globals.colors[color_key]

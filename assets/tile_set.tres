@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://ba21nkhfxgbs8" path="res://scenes/entities/tiles/P2_Box_V2.tscn" id="3_uic34"]
 [ext_resource type="PackedScene" uid="uid://bp2box000004" path="res://scenes/entities/tiles/P2_Box.tscn" id="4_p2box"]
 [ext_resource type="PackedScene" uid="uid://bp1body00005" path="res://scenes/entities/tiles/P1_Body.tscn" id="5_p1body"]
+[ext_resource type="PackedScene" uid="uid://4w4cj5majjla" path="res://scenes/entities/tiles/CalibBox_v1.tscn" id="6_3vqt5"]
 [ext_resource type="PackedScene" uid="uid://bp2body00006" path="res://scenes/entities/tiles/P2_Body.tscn" id="6_p2body"]
 [ext_resource type="PackedScene" uid="uid://bgoal0000007" path="res://scenes/entities/tiles/Goal.tscn" id="7_goal"]
+[ext_resource type="PackedScene" uid="uid://cy5axmhrdqfjn" path="res://scenes/entities/tiles/CalibBox_v2.tscn" id="7_p73ri"]
 [ext_resource type="PackedScene" uid="uid://b7yqrtrotu1b2" path="res://scenes/entities/tiles/P1_Box_V1.tscn" id="8_prmj7"]
 [ext_resource type="PackedScene" uid="uid://bc0n3n8i11gue" path="res://scenes/entities/tiles/P1_Box_V2.tscn" id="9_dixdc"]
 [ext_resource type="PackedScene" uid="uid://snmpsqakwp3b" path="res://scenes/entities/tiles/Box_V1.tscn" id="12_5e0im"]
@@ -28,6 +30,8 @@ scenes/10/scene = ExtResource("8_prmj7")
 scenes/11/scene = ExtResource("9_dixdc")
 scenes/12/scene = ExtResource("2_581ag")
 scenes/13/scene = ExtResource("3_uic34")
+scenes/14/scene = ExtResource("6_3vqt5")
+scenes/15/scene = ExtResource("7_p73ri")
 
 [resource]
 tile_size = Vector2i(60, 60)
