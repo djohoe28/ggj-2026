@@ -118,7 +118,7 @@ var escaped: bool = false
 func apply_from_kind() -> void:
 	var description := entity_kind_to_string(entity_kind)
 	name = description
-	$Label.text = description.replace(" ", "\n")
+	# $Label.text = description.replace(" ", "\n")
 	# Collision layers: 1=P1, 2=P2, 3=Solid. All entities on layer 3.
 	for i in range(1, 4):
 		set_collision_layer_value(i, true)
@@ -180,15 +180,20 @@ func _unregister_at_map_coords() -> void:
 		Globals.unregister_entity(get_map_coords())
 
 ## Returns this entity's effective relationship for the given pusher (1 = Blue/P1, 2 = Red/P2).
-func _get_relationship_for_pusher(pusher_player_id: int) -> _Relationship:
+## When pusher_is_box is true, P1_BOX and P2_BOX are always MOVABLE (boxes can push each other).
+func _get_relationship_for_pusher(pusher_player_id: int, pusher_is_box: bool = false) -> _Relationship:
 	match entity_kind:
 		EntityKind.WALL:
 			return _Relationship.IMMOVABLE
 		EntityKind.BOX:
 			return _Relationship.MOVABLE
 		EntityKind.P1_BOX:
+			if pusher_is_box:
+				return _Relationship.MOVABLE
 			return _Relationship.MOVABLE if pusher_player_id == 1 else _Relationship.IMMOVABLE
 		EntityKind.P2_BOX:
+			if pusher_is_box:
+				return _Relationship.MOVABLE
 			return _Relationship.IMMOVABLE if pusher_player_id == 1 else _Relationship.MOVABLE
 		EntityKind.P1_BODY:
 			return _Relationship.CONTROLLED if pusher_player_id == 1 else _Relationship.IMMOVABLE
@@ -238,7 +243,7 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 	if neighbor == null:
 		return false  # Hit non-Entity (e.g. tilemap collision)
 
-	var rel := neighbor._get_relationship_for_pusher(pusher_player_id)
+	var rel := neighbor._get_relationship_for_pusher(pusher_player_id, _is_box())
 	# GOAL: Only Players (CONTROLLED) can move into Goals. Boxes cannot.
 	if rel == _Relationship.GOAL:
 		return _is_controlled()
@@ -264,11 +269,11 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	var my_coords := get_map_coords()
 	var new_coords := layer.get_neighbor_cell(my_coords, direction)
 	var neighbor := Globals.get_entity_at(new_coords) as Entity
-	var neighbor_is_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == _Relationship.GOAL
+	var neighbor_is_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id, _is_box()) == _Relationship.GOAL
 	var is_moving_into_goal := neighbor_is_goal and _is_controlled()
 
 	# Push MOVABLE neighbor first (recursive chain: farthest entity moves first)
-	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == _Relationship.MOVABLE:
+	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id, _is_box()) == _Relationship.MOVABLE:
 		var success := await neighbor.move(direction)
 		if not success:
 			if _is_controlled():
@@ -323,7 +328,7 @@ func try_move(direction: Vector2, pusher_player_id: int) -> bool:
 		var my_coords := get_map_coords()
 		var new_coords := layer.get_neighbor_cell(my_coords, cell_dir)
 		var neighbor := Globals.get_entity_at(new_coords) as Entity
-		if neighbor != null and neighbor != self and neighbor._get_relationship_for_pusher(pusher_player_id) == _Relationship.MOVABLE:
+		if neighbor != null and neighbor != self and neighbor._get_relationship_for_pusher(pusher_player_id, _is_box()) == _Relationship.MOVABLE:
 			pushed.emit(self, neighbor, direction)
 
 	return await move(cell_dir)
@@ -378,3 +383,6 @@ func _is_controlled() -> bool:
 	if escaped:
 		return false
 	return entity_kind == EntityKind.P1_BODY or entity_kind == EntityKind.P2_BODY
+
+func _is_box() -> bool:
+	return entity_kind == EntityKind.BOX or entity_kind == EntityKind.P1_BOX or entity_kind == EntityKind.P2_BOX
