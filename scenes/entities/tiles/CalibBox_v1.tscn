@@ -8,16 +8,16 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_buso7"]
 gradient = SubResource("Gradient_78lxn")
+width = 30
+height = 30
 
 [node name="Box" unique_id=1284932722 instance=ExtResource("1_ys4pn")]
-collision_layer = 7
 entity_kind = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
 texture = SubResource("GradientTexture2D_buso7")
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
-modulate = Color(1, 0.76862746, 0.98039216, 1)
 texture = ExtResource("2_1nw6m")
 
 [node name="Label" parent="." index="3" unique_id=149673527]

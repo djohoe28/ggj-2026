@@ -4,17 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bb3nu3eb20s6g" path="res://assets/graphics/lowres/exit.png" id="2_ec7n0"]
 
 [node name="Goal" unique_id=1284932722 instance=ExtResource("1_entity")]
-collision_layer = 7
 entity_kind = 6
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
-scale = Vector2(2, 2)
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("2_ec7n0")
 color_key = 3
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
-modulate = Color(1, 0.76862746, 0.98039216, 1)
-scale = Vector2(2, 2)
 texture = ExtResource("2_ec7n0")
 
 [node name="Label" parent="." index="3" unique_id=149673527]

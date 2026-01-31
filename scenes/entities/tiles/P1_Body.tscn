@@ -10,9 +10,12 @@ collision_mask = 6
 entity_kind = 4
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
+modulate = Color(0.21568628, 0.9882353, 1, 1)
+scale = Vector2(2, 2)
 texture = ExtResource("2_j6vtm")
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
+modulate = Color(1, 0.76862746, 0.98039216, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("3_j6vtm")
 

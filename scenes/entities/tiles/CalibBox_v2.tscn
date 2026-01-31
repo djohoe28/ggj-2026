@@ -6,11 +6,12 @@
 [sub_resource type="Gradient" id="Gradient_6txx4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mmej7"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmej7"]
 gradient = SubResource("Gradient_6txx4")
+width = 30
+height = 30
 
 [node name="Box" unique_id=1284932722 instance=ExtResource("1_mmej7")]
-collision_layer = 7
 entity_kind = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
@@ -18,8 +19,7 @@ texture = ExtResource("2_6txx4")
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
 position = Vector2(3.8146973e-06, 9.536743e-07)
-scale = Vector2(0.23437501, 59.999996)
-texture = SubResource("GradientTexture1D_mmej7")
+texture = SubResource("GradientTexture2D_mmej7")
 
 [node name="Label" parent="." index="3" unique_id=149673527]
 visible = false
