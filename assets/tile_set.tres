@@ -1,71 +1,116 @@
 [gd_resource type="TileSet" format=3 uid="uid://drb7k0754qprm"]
 
-[ext_resource type="PackedScene" uid="uid://dekob2brtqs5g" path="res://scenes/entities/tiles/Blue_Controlled_Controlled.tscn" id="1_263wg"]
-[ext_resource type="PackedScene" uid="uid://dfj28784kvde2" path="res://scenes/entities/tiles/Blue_Controlled_Ghost.tscn" id="2_ahuh7"]
-[ext_resource type="PackedScene" uid="uid://c6dy66jebumi3" path="res://scenes/entities/tiles/Blue_Controlled_Immovable.tscn" id="3_s4xki"]
-[ext_resource type="PackedScene" uid="uid://ektegoxsdmcp" path="res://scenes/entities/tiles/Blue_Controlled_Movable.tscn" id="4_31jfq"]
-[ext_resource type="PackedScene" uid="uid://cqyqkht06qvfc" path="res://scenes/entities/tiles/Blue_Ghost_Controlled.tscn" id="5_dk30n"]
-[ext_resource type="PackedScene" uid="uid://cb3hxa86g3jvl" path="res://scenes/entities/tiles/Blue_Ghost_Ghost.tscn" id="6_nhjhm"]
-[ext_resource type="PackedScene" uid="uid://ckdjlwuwrjkks" path="res://scenes/entities/tiles/Blue_Ghost_Immovable.tscn" id="7_ml5tq"]
-[ext_resource type="PackedScene" uid="uid://lnadjkuo311t" path="res://scenes/entities/tiles/Blue_Ghost_Movable.tscn" id="8_jks14"]
-[ext_resource type="PackedScene" uid="uid://yir7p0fssntc" path="res://scenes/entities/tiles/Blue_Immovable_Controlled.tscn" id="9_heyte"]
-[ext_resource type="PackedScene" uid="uid://cqwcdup8myrmq" path="res://scenes/entities/tiles/Blue_Immovable_Ghost.tscn" id="10_h48ho"]
-[ext_resource type="PackedScene" uid="uid://c3kaalokwvl5m" path="res://scenes/entities/tiles/Blue_Immovable_Immovable.tscn" id="11_v87wo"]
-[ext_resource type="PackedScene" uid="uid://b6owtp3liqh8q" path="res://scenes/entities/tiles/Blue_Immovable_Movable.tscn" id="12_u2m84"]
-[ext_resource type="PackedScene" uid="uid://bq2bmy1cd0g24" path="res://scenes/entities/tiles/Blue_Movable_Controlled.tscn" id="13_8w3o5"]
-[ext_resource type="PackedScene" uid="uid://dqbcexxfj4djc" path="res://scenes/entities/tiles/Blue_Movable_Ghost.tscn" id="14_hkejl"]
-[ext_resource type="PackedScene" uid="uid://bwnuog6287lq" path="res://scenes/entities/tiles/Blue_Movable_Immovable.tscn" id="15_qhk6k"]
-[ext_resource type="PackedScene" uid="uid://bo1prrbibfhaw" path="res://scenes/entities/tiles/Blue_Movable_Movable.tscn" id="16_57npt"]
-[ext_resource type="PackedScene" uid="uid://c5bw7kmk1khiq" path="res://scenes/entities/tiles/Both_Controlled_Controlled.tscn" id="17_ymwn5"]
-[ext_resource type="PackedScene" uid="uid://qj8efejbsuci" path="res://scenes/entities/tiles/Both_Controlled_Ghost.tscn" id="18_300on"]
-[ext_resource type="PackedScene" uid="uid://bo366cwmki45c" path="res://scenes/entities/tiles/Both_Controlled_Immovable.tscn" id="19_hfj5w"]
-[ext_resource type="PackedScene" uid="uid://dc0mg8gmpfkdi" path="res://scenes/entities/tiles/Both_Controlled_Movable.tscn" id="20_v0ah6"]
-[ext_resource type="PackedScene" uid="uid://dwsolr8rtmey6" path="res://scenes/entities/tiles/Both_Ghost_Controlled.tscn" id="21_10lrf"]
-[ext_resource type="PackedScene" uid="uid://bw8bo403esabl" path="res://scenes/entities/tiles/Both_Ghost_Ghost.tscn" id="22_rpwfv"]
-[ext_resource type="PackedScene" uid="uid://51unf5axg7it" path="res://scenes/entities/tiles/Both_Ghost_Immovable.tscn" id="23_mfhgk"]
-[ext_resource type="PackedScene" uid="uid://b4oabkc1e68bp" path="res://scenes/entities/tiles/Both_Ghost_Movable.tscn" id="24_0lvg2"]
-[ext_resource type="PackedScene" uid="uid://btnt3ibks5enc" path="res://scenes/entities/tiles/Both_Immovable_Controlled.tscn" id="25_t1fyu"]
-[ext_resource type="PackedScene" uid="uid://dt51q1qoyejow" path="res://scenes/entities/tiles/Both_Immovable_Ghost.tscn" id="26_qqi45"]
-[ext_resource type="PackedScene" uid="uid://efu01m2vwips" path="res://scenes/entities/tiles/Both_Immovable_Immovable.tscn" id="27_fx6vf"]
-[ext_resource type="PackedScene" uid="uid://ccic2a0jwnqni" path="res://scenes/entities/tiles/Both_Immovable_Movable.tscn" id="28_iioos"]
-[ext_resource type="PackedScene" uid="uid://dieanthg4ilgw" path="res://scenes/entities/tiles/Both_Movable_Controlled.tscn" id="29_c3mia"]
-[ext_resource type="PackedScene" uid="uid://cjcixgosc3p80" path="res://scenes/entities/tiles/Both_Movable_Ghost.tscn" id="30_pepem"]
-[ext_resource type="PackedScene" uid="uid://cguyp1vdp5056" path="res://scenes/entities/tiles/Both_Movable_Immovable.tscn" id="31_ll8xk"]
-[ext_resource type="PackedScene" uid="uid://x6q2nwhkq66l" path="res://scenes/entities/tiles/Both_Movable_Movable.tscn" id="32_40n6u"]
-[ext_resource type="PackedScene" uid="uid://c0ti7yjuf1ndc" path="res://scenes/entities/tiles/None_Controlled_Controlled.tscn" id="33_h307y"]
-[ext_resource type="PackedScene" uid="uid://bwlsne4ilixj3" path="res://scenes/entities/tiles/None_Controlled_Ghost.tscn" id="34_vska1"]
-[ext_resource type="PackedScene" uid="uid://ci8y8hvm5jqp8" path="res://scenes/entities/tiles/None_Controlled_Immovable.tscn" id="35_cvled"]
-[ext_resource type="PackedScene" uid="uid://ct55lo7i51kd3" path="res://scenes/entities/tiles/None_Controlled_Movable.tscn" id="36_cssdr"]
-[ext_resource type="PackedScene" uid="uid://box2jalfeqnjp" path="res://scenes/entities/tiles/None_Ghost_Controlled.tscn" id="37_hfufo"]
-[ext_resource type="PackedScene" uid="uid://cb4jto0cgoy6n" path="res://scenes/entities/tiles/None_Ghost_Ghost.tscn" id="38_kxh0v"]
-[ext_resource type="PackedScene" uid="uid://bun732vdrhu4n" path="res://scenes/entities/tiles/None_Ghost_Immovable.tscn" id="39_g1enl"]
-[ext_resource type="PackedScene" uid="uid://bcbcws4khlx3v" path="res://scenes/entities/tiles/None_Ghost_Movable.tscn" id="40_4awf7"]
-[ext_resource type="PackedScene" uid="uid://b8ghlpthgcbf1" path="res://scenes/entities/tiles/None_Immovable_Controlled.tscn" id="41_3ona3"]
-[ext_resource type="PackedScene" uid="uid://civgv1w67idyc" path="res://scenes/entities/tiles/None_Immovable_Ghost.tscn" id="42_fgv5p"]
-[ext_resource type="PackedScene" uid="uid://dytsw1drxwkoc" path="res://scenes/entities/tiles/None_Immovable_Immovable.tscn" id="43_hlx4x"]
-[ext_resource type="PackedScene" uid="uid://cxpucnn7p5iqy" path="res://scenes/entities/tiles/None_Immovable_Movable.tscn" id="44_yw6ru"]
-[ext_resource type="PackedScene" uid="uid://dreqmwsd24y5d" path="res://scenes/entities/tiles/None_Movable_Controlled.tscn" id="45_5mi3b"]
-[ext_resource type="PackedScene" uid="uid://dnsdj3u2wjmpp" path="res://scenes/entities/tiles/None_Movable_Ghost.tscn" id="46_5hkns"]
-[ext_resource type="PackedScene" uid="uid://c2a2bm3s7121" path="res://scenes/entities/tiles/None_Movable_Immovable.tscn" id="47_3uqpc"]
-[ext_resource type="PackedScene" uid="uid://dvryfbvoxkch4" path="res://scenes/entities/tiles/None_Movable_Movable.tscn" id="48_c7gqv"]
-[ext_resource type="PackedScene" uid="uid://cw80qwc3ptjmk" path="res://scenes/entities/tiles/Red_Controlled_Controlled.tscn" id="49_fjsfq"]
-[ext_resource type="PackedScene" uid="uid://cpsvwe04tk8k6" path="res://scenes/entities/tiles/Red_Controlled_Ghost.tscn" id="50_8aujl"]
-[ext_resource type="PackedScene" uid="uid://c1ts4ja62vcxn" path="res://scenes/entities/tiles/Red_Controlled_Immovable.tscn" id="51_takvc"]
-[ext_resource type="PackedScene" uid="uid://dlnmqhni1xvge" path="res://scenes/entities/tiles/Red_Controlled_Movable.tscn" id="52_psqmn"]
-[ext_resource type="PackedScene" uid="uid://dx8xu42s3vrjv" path="res://scenes/entities/tiles/Red_Ghost_Controlled.tscn" id="53_1xj4f"]
-[ext_resource type="PackedScene" uid="uid://bupv3vifc5776" path="res://scenes/entities/tiles/Red_Ghost_Ghost.tscn" id="54_kdgmu"]
-[ext_resource type="PackedScene" uid="uid://yd0o5tuqxwqj" path="res://scenes/entities/tiles/Red_Ghost_Immovable.tscn" id="55_inx6a"]
-[ext_resource type="PackedScene" uid="uid://bimfif11ld4kd" path="res://scenes/entities/tiles/Red_Ghost_Movable.tscn" id="56_dyks1"]
-[ext_resource type="PackedScene" uid="uid://b5jwqcnkphbox" path="res://scenes/entities/tiles/Red_Immovable_Controlled.tscn" id="57_mo6h3"]
-[ext_resource type="PackedScene" uid="uid://dat52swr0wfiw" path="res://scenes/entities/tiles/Red_Immovable_Ghost.tscn" id="58_q4kvi"]
-[ext_resource type="PackedScene" uid="uid://gqpg5m0ebuek" path="res://scenes/entities/tiles/Red_Immovable_Immovable.tscn" id="59_q3don"]
-[ext_resource type="PackedScene" uid="uid://cbibcs36itu7j" path="res://scenes/entities/tiles/Red_Immovable_Movable.tscn" id="60_ym3r6"]
-[ext_resource type="PackedScene" uid="uid://dnhnyqcapt6ba" path="res://scenes/entities/tiles/Red_Movable_Controlled.tscn" id="61_nuidt"]
-[ext_resource type="PackedScene" uid="uid://cvxlshe6pbxbo" path="res://scenes/entities/tiles/Red_Movable_Ghost.tscn" id="62_ydq2t"]
-[ext_resource type="PackedScene" uid="uid://dyqgmx1l5bkes" path="res://scenes/entities/tiles/Red_Movable_Immovable.tscn" id="63_0pq26"]
-[ext_resource type="PackedScene" uid="uid://8i72e8sr76n0" path="res://scenes/entities/tiles/Red_Movable_Movable.tscn" id="64_a7sqk"]
+[ext_resource type="PackedScene" uid="uid://b5wrxeqja7ba7" path="res://scenes/entities/tiles/Blue_Controlled_Controlled.tscn" id="1_263wg"]
+[ext_resource type="PackedScene" uid="uid://sbsv0ssxarkg" path="res://scenes/entities/tiles/Blue_Controlled_Ghost.tscn" id="2_ahuh7"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Immovable_Goal.tscn" id="3_hfufo"]
+[ext_resource type="PackedScene" uid="uid://i2hipg1qiu3s" path="res://scenes/entities/tiles/Blue_Controlled_Immovable.tscn" id="3_s4xki"]
+[ext_resource type="PackedScene" uid="uid://dxaf4mekm5nsb" path="res://scenes/entities/tiles/Blue_Controlled_Movable.tscn" id="4_31jfq"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Movable_Goal.tscn" id="4_kxh0v"]
+[ext_resource type="PackedScene" uid="uid://bs0amtll130bq" path="res://scenes/entities/tiles/Blue_Ghost_Controlled.tscn" id="5_dk30n"]
+[ext_resource type="PackedScene" uid="uid://duwifknmfid4i" path="res://scenes/entities/tiles/Blue_Ghost_Ghost.tscn" id="6_nhjhm"]
+[ext_resource type="PackedScene" uid="uid://c1dtobgsdc6k" path="res://scenes/entities/tiles/Blue_Ghost_Immovable.tscn" id="7_ml5tq"]
+[ext_resource type="PackedScene" uid="uid://b6pd6v51x42pg" path="res://scenes/entities/tiles/Blue_Ghost_Movable.tscn" id="8_jks14"]
+[ext_resource type="PackedScene" uid="uid://cwwryf388ypsd" path="res://scenes/entities/tiles/Blue_Immovable_Controlled.tscn" id="9_heyte"]
+[ext_resource type="PackedScene" uid="uid://bu72okb68mq20" path="res://scenes/entities/tiles/Blue_Immovable_Ghost.tscn" id="10_h48ho"]
+[ext_resource type="PackedScene" uid="uid://b5xhk2rfuw7oh" path="res://scenes/entities/tiles/Blue_Immovable_Immovable.tscn" id="11_v87wo"]
+[ext_resource type="PackedScene" uid="uid://xbvc0w5nos37" path="res://scenes/entities/tiles/Blue_Immovable_Movable.tscn" id="12_u2m84"]
+[ext_resource type="PackedScene" uid="uid://bfs0hi4h0ol1q" path="res://scenes/entities/tiles/Blue_Movable_Controlled.tscn" id="13_8w3o5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Controlled_Goal.tscn" id="14_g1enl"]
+[ext_resource type="PackedScene" uid="uid://botlr21yh6g84" path="res://scenes/entities/tiles/Blue_Movable_Ghost.tscn" id="14_hkejl"]
+[ext_resource type="PackedScene" uid="uid://qw3ip24kqtwm" path="res://scenes/entities/tiles/Blue_Movable_Immovable.tscn" id="15_qhk6k"]
+[ext_resource type="PackedScene" uid="uid://dptswxgoemg04" path="res://scenes/entities/tiles/Blue_Movable_Movable.tscn" id="16_57npt"]
+[ext_resource type="PackedScene" uid="uid://cwkrbwgvpwdhf" path="res://scenes/entities/tiles/Both_Controlled_Controlled.tscn" id="17_ymwn5"]
+[ext_resource type="PackedScene" uid="uid://yweryin236h0" path="res://scenes/entities/tiles/Both_Controlled_Ghost.tscn" id="18_300on"]
+[ext_resource type="PackedScene" uid="uid://bhaqhb7fumdmi" path="res://scenes/entities/tiles/Both_Controlled_Immovable.tscn" id="19_hfj5w"]
+[ext_resource type="PackedScene" uid="uid://xta5lffn6cv7" path="res://scenes/entities/tiles/Both_Controlled_Movable.tscn" id="20_v0ah6"]
+[ext_resource type="PackedScene" uid="uid://cc0s7rqgi01fb" path="res://scenes/entities/tiles/Both_Ghost_Controlled.tscn" id="21_10lrf"]
+[ext_resource type="PackedScene" uid="uid://dsis8jf0faym" path="res://scenes/entities/tiles/Both_Ghost_Ghost.tscn" id="22_rpwfv"]
+[ext_resource type="PackedScene" uid="uid://dsume8166wclb" path="res://scenes/entities/tiles/Both_Ghost_Immovable.tscn" id="23_mfhgk"]
+[ext_resource type="PackedScene" uid="uid://wdjqcycrosa6" path="res://scenes/entities/tiles/Both_Ghost_Movable.tscn" id="24_0lvg2"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Ghost_Goal.tscn" id="25_4awf7"]
+[ext_resource type="PackedScene" uid="uid://d3ny146o3d761" path="res://scenes/entities/tiles/Both_Immovable_Controlled.tscn" id="25_t1fyu"]
+[ext_resource type="PackedScene" uid="uid://codc81pl2eq4r" path="res://scenes/entities/tiles/Both_Immovable_Ghost.tscn" id="26_qqi45"]
+[ext_resource type="PackedScene" uid="uid://bsgqno7ij30l6" path="res://scenes/entities/tiles/Both_Immovable_Immovable.tscn" id="27_fx6vf"]
+[ext_resource type="PackedScene" uid="uid://qtuowd2anxie" path="res://scenes/entities/tiles/Both_Immovable_Movable.tscn" id="28_iioos"]
+[ext_resource type="PackedScene" uid="uid://bn2fi7vwolkeu" path="res://scenes/entities/tiles/Both_Movable_Controlled.tscn" id="29_c3mia"]
+[ext_resource type="PackedScene" uid="uid://dir05rftmpe0b" path="res://scenes/entities/tiles/Both_Movable_Ghost.tscn" id="30_pepem"]
+[ext_resource type="PackedScene" uid="uid://cr2kqxa42w1nn" path="res://scenes/entities/tiles/Both_Movable_Immovable.tscn" id="31_ll8xk"]
+[ext_resource type="PackedScene" uid="uid://5ccaig60ds5s" path="res://scenes/entities/tiles/Both_Movable_Movable.tscn" id="32_40n6u"]
+[ext_resource type="PackedScene" uid="uid://du34jj4g1cwj1" path="res://scenes/entities/tiles/None_Controlled_Controlled.tscn" id="33_h307y"]
+[ext_resource type="PackedScene" uid="uid://djbcu4yolnqyq" path="res://scenes/entities/tiles/None_Controlled_Ghost.tscn" id="34_vska1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Goal_Controlled.tscn" id="35_3ona3"]
+[ext_resource type="PackedScene" uid="uid://2p8m1aiv83mf" path="res://scenes/entities/tiles/None_Controlled_Immovable.tscn" id="35_cvled"]
+[ext_resource type="PackedScene" uid="uid://ckisj11gvlibn" path="res://scenes/entities/tiles/None_Controlled_Movable.tscn" id="36_cssdr"]
+[ext_resource type="PackedScene" uid="uid://b3pkxyjeyew6n" path="res://scenes/entities/tiles/None_Ghost_Controlled.tscn" id="37_hfufo"]
+[ext_resource type="PackedScene" uid="uid://dis24sn7vyheo" path="res://scenes/entities/tiles/None_Ghost_Ghost.tscn" id="38_kxh0v"]
+[ext_resource type="PackedScene" uid="uid://cv5fo2m30mulq" path="res://scenes/entities/tiles/None_Ghost_Immovable.tscn" id="39_g1enl"]
+[ext_resource type="PackedScene" uid="uid://c1yn2irvhh8mt" path="res://scenes/entities/tiles/None_Ghost_Movable.tscn" id="40_4awf7"]
+[ext_resource type="PackedScene" uid="uid://dbkqwijpoeffb" path="res://scenes/entities/tiles/None_Immovable_Controlled.tscn" id="41_3ona3"]
+[ext_resource type="PackedScene" uid="uid://be10ovicd56nq" path="res://scenes/entities/tiles/None_Immovable_Ghost.tscn" id="42_fgv5p"]
+[ext_resource type="PackedScene" uid="uid://cc2cdmndtf7pc" path="res://scenes/entities/tiles/None_Immovable_Immovable.tscn" id="43_hlx4x"]
+[ext_resource type="PackedScene" uid="uid://devju6n31b5di" path="res://scenes/entities/tiles/None_Immovable_Movable.tscn" id="44_yw6ru"]
+[ext_resource type="PackedScene" uid="uid://bn881adh53or7" path="res://scenes/entities/tiles/None_Movable_Controlled.tscn" id="45_5mi3b"]
+[ext_resource type="PackedScene" uid="uid://cvvyip1xkt0nh" path="res://scenes/entities/tiles/None_Movable_Ghost.tscn" id="46_5hkns"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Goal_Ghost.tscn" id="46_fgv5p"]
+[ext_resource type="PackedScene" uid="uid://c44757trpjqvr" path="res://scenes/entities/tiles/None_Movable_Immovable.tscn" id="47_3uqpc"]
+[ext_resource type="PackedScene" uid="uid://3dmr5w7csw80" path="res://scenes/entities/tiles/None_Movable_Movable.tscn" id="48_c7gqv"]
+[ext_resource type="PackedScene" uid="uid://cg028dxkpcqq8" path="res://scenes/entities/tiles/Red_Controlled_Controlled.tscn" id="49_fjsfq"]
+[ext_resource type="PackedScene" uid="uid://tj7ftqvgrmxw" path="res://scenes/entities/tiles/Red_Controlled_Ghost.tscn" id="50_8aujl"]
+[ext_resource type="PackedScene" uid="uid://cbxekp1130uwr" path="res://scenes/entities/tiles/Red_Controlled_Immovable.tscn" id="51_takvc"]
+[ext_resource type="PackedScene" uid="uid://bv01xffrxtyv0" path="res://scenes/entities/tiles/Red_Controlled_Movable.tscn" id="52_psqmn"]
+[ext_resource type="PackedScene" uid="uid://goljeebyxu65" path="res://scenes/entities/tiles/Red_Ghost_Controlled.tscn" id="53_1xj4f"]
+[ext_resource type="PackedScene" uid="uid://dnj3iqxm23ij8" path="res://scenes/entities/tiles/Red_Ghost_Ghost.tscn" id="54_kdgmu"]
+[ext_resource type="PackedScene" uid="uid://bj4u8b18tkgxm" path="res://scenes/entities/tiles/Red_Ghost_Immovable.tscn" id="55_inx6a"]
+[ext_resource type="PackedScene" uid="uid://cfpwvierbjp2l" path="res://scenes/entities/tiles/Red_Ghost_Movable.tscn" id="56_dyks1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Goal_Goal.tscn" id="57_hlx4x"]
+[ext_resource type="PackedScene" uid="uid://cekpajotaewx6" path="res://scenes/entities/tiles/Red_Immovable_Controlled.tscn" id="57_mo6h3"]
+[ext_resource type="PackedScene" uid="uid://p4gurypcw28k" path="res://scenes/entities/tiles/Red_Immovable_Ghost.tscn" id="58_q4kvi"]
+[ext_resource type="PackedScene" uid="uid://csdba50e4jimk" path="res://scenes/entities/tiles/Red_Immovable_Immovable.tscn" id="59_q3don"]
+[ext_resource type="PackedScene" uid="uid://bdsq4j0bbuhgk" path="res://scenes/entities/tiles/Red_Immovable_Movable.tscn" id="60_ym3r6"]
+[ext_resource type="PackedScene" uid="uid://b3dyl34oe0h2k" path="res://scenes/entities/tiles/Red_Movable_Controlled.tscn" id="61_nuidt"]
+[ext_resource type="PackedScene" uid="uid://d181gta71spo0" path="res://scenes/entities/tiles/Red_Movable_Ghost.tscn" id="62_ydq2t"]
+[ext_resource type="PackedScene" uid="uid://u3oaiuhmdk1x" path="res://scenes/entities/tiles/Red_Movable_Immovable.tscn" id="63_0pq26"]
+[ext_resource type="PackedScene" uid="uid://csn7wooqm6fi1" path="res://scenes/entities/tiles/Red_Movable_Movable.tscn" id="64_a7sqk"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Goal_Immovable.tscn" id="68_yw6ru"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Movable_Goal.tscn" id="73_5mi3b"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Controlled_Goal.tscn" id="74_5hkns"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Ghost_Goal.tscn" id="75_3uqpc"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Goal_Controlled.tscn" id="76_c7gqv"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Goal_Ghost.tscn" id="77_fjsfq"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Goal_Goal.tscn" id="78_8aujl"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Goal_Movable.tscn" id="79_takvc"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Goal_Immovable.tscn" id="80_psqmn"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Goal_Movable.tscn" id="81_1xj4f"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Immovable_Goal.tscn" id="82_kdgmu"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Both_Movable_Goal.tscn" id="83_inx6a"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Controlled_Goal.tscn" id="84_dyks1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Ghost_Goal.tscn" id="85_mo6h3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Goal_Controlled.tscn" id="86_q4kvi"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Goal_Ghost.tscn" id="87_q3don"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Goal_Goal.tscn" id="88_ym3r6"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Goal_Immovable.tscn" id="89_nuidt"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Blue_Immovable_Goal.tscn" id="90_ydq2t"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Goal_Movable.tscn" id="91_0pq26"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Immovable_Goal.tscn" id="92_a7sqk"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/None_Movable_Goal.tscn" id="93_stij5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Controlled_Goal.tscn" id="94_mq2v3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Ghost_Goal.tscn" id="95_4ra2e"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Goal_Controlled.tscn" id="96_r0emk"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Goal_Ghost.tscn" id="97_mu67g"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Goal_Goal.tscn" id="98_idao6"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Goal_Immovable.tscn" id="99_spwn3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/tiles/Red_Goal_Movable.tscn" id="100_ocxbo"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u6000"]
+scenes/1/scene = ExtResource("23_mfhgk")
+scenes/2/scene = ExtResource("14_g1enl")
+scenes/3/scene = ExtResource("25_4awf7")
+scenes/4/scene = ExtResource("35_3ona3")
+scenes/5/scene = ExtResource("46_fgv5p")
+scenes/6/scene = ExtResource("57_hlx4x")
+scenes/7/scene = ExtResource("68_yw6ru")
+scenes/8/scene = ExtResource("79_takvc")
+scenes/9/scene = ExtResource("90_ydq2t")
 scenes/10/scene = ExtResource("1_263wg")
 scenes/11/scene = ExtResource("2_ahuh7")
 scenes/12/scene = ExtResource("3_s4xki")
@@ -130,6 +175,34 @@ scenes/70/scene = ExtResource("61_nuidt")
 scenes/71/scene = ExtResource("62_ydq2t")
 scenes/72/scene = ExtResource("63_0pq26")
 scenes/73/scene = ExtResource("64_a7sqk")
+scenes/74/scene = ExtResource("73_5mi3b")
+scenes/75/scene = ExtResource("74_5hkns")
+scenes/76/scene = ExtResource("75_3uqpc")
+scenes/77/scene = ExtResource("76_c7gqv")
+scenes/78/scene = ExtResource("77_fjsfq")
+scenes/79/scene = ExtResource("78_8aujl")
+scenes/80/scene = ExtResource("80_psqmn")
+scenes/81/scene = ExtResource("81_1xj4f")
+scenes/82/scene = ExtResource("82_kdgmu")
+scenes/83/scene = ExtResource("83_inx6a")
+scenes/84/scene = ExtResource("84_dyks1")
+scenes/85/scene = ExtResource("85_mo6h3")
+scenes/86/scene = ExtResource("86_q4kvi")
+scenes/87/scene = ExtResource("87_q3don")
+scenes/88/scene = ExtResource("88_ym3r6")
+scenes/89/scene = ExtResource("89_nuidt")
+scenes/90/scene = ExtResource("91_0pq26")
+scenes/91/scene = ExtResource("92_a7sqk")
+scenes/92/scene = ExtResource("93_stij5")
+scenes/93/scene = ExtResource("94_mq2v3")
+scenes/94/scene = ExtResource("95_4ra2e")
+scenes/95/scene = ExtResource("96_r0emk")
+scenes/96/scene = ExtResource("97_mu67g")
+scenes/97/scene = ExtResource("98_idao6")
+scenes/98/scene = ExtResource("99_spwn3")
+scenes/99/scene = ExtResource("100_ocxbo")
+scenes/100/scene = ExtResource("3_hfufo")
+scenes/101/scene = ExtResource("4_kxh0v")
 
 [resource]
 tile_size = Vector2i(60, 60)

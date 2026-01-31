@@ -11,8 +11,8 @@ const ENTITY_OUTPUT_DIR := "res://scenes/entities/tiles/"
 func generate():
 	for visible_to_player1 in [true, false]:
 		for visible_to_player2 in [true, false]:
-			for relationship_with_player1 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED]:
-				for relationship_with_player2 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED]:
+			for relationship_with_player1 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED, Entity.Relationship.GOAL]:
+				for relationship_with_player2 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED, Entity.Relationship.GOAL]:
 					# Determine the name of the Entity.
 					var _color: String
 					if visible_to_player1 and visible_to_player2:
@@ -34,6 +34,8 @@ func generate():
 							_type1 = "Immovable"
 						Entity.Relationship.CONTROLLED:
 							_type1 = "Controlled"
+						Entity.Relationship.GOAL:
+							_type1 = "Goal"
 
 					var _type2: String
 					match relationship_with_player2:
@@ -45,6 +47,8 @@ func generate():
 							_type2 = "Immovable"
 						Entity.Relationship.CONTROLLED:
 							_type2 = "Controlled"
+						Entity.Relationship.GOAL:
+							_type2 = "Goal"
 
 					var entity_name := _color + "_" + _type1 + "_" + _type2
 					var output_path := ENTITY_OUTPUT_DIR + entity_name + ".tscn"
