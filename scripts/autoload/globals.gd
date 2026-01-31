@@ -36,6 +36,14 @@ func unregister_entity(coords: Vector2i) -> void:
 func get_entity_at(coords: Vector2i) -> Node:
 	return entity_at_coords.get(coords, null)
 
+## Returns the number of CONTROLLED entities still registered in the level.
+func count_controlled_entities() -> int:
+	var count := 0
+	for entity in entity_at_coords.values():
+		if entity.has_method("_is_controlled") and entity._is_controlled():
+			count += 1
+	return count
+
 func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint():
 		return

@@ -5,11 +5,16 @@ class_name Entity
 ## How this Entity interacts with each Player.
 ## GHOST: does not block movement. MOVABLE: can be pushed. IMMOVABLE: blocks movement.
 ## CONTROLLED: responds to the respective player's Input actions (p1_*, p2_*).
+## GOAL: CONTROLLED entities that move into a Goal escape (freed from the scene).
+## When true, multiple Players can escape from the same Goal. When false, the Goal is consumed by the first Player.
+const GOAL_REUSABLE: bool = true
+
 enum Relationship {
 	GHOST = 0,
 	MOVABLE = 1,
 	IMMOVABLE = 2,
-	CONTROLLED = 3
+	CONTROLLED = 3,
+	GOAL = 4
 }
 
 ## Maps input actions (p1_up, p1_down, etc.) to [player_id, direction].
@@ -93,6 +98,9 @@ var _queued_direction: Vector2 = Vector2.ZERO
 var _queued_pusher_id: int = 0
 var is_moving: bool = false
 
+## When true, entity has escaped into a Goal: no input, no collision, awaiting free.
+var escaped: bool = false
+
 func apply_name() -> void:
 	var description: String = ""
 	if visible_to_player1 and visible_to_player2:
@@ -111,6 +119,8 @@ func apply_name() -> void:
 		description += " Immovable"
 	elif relationship_with_player1 == Relationship.CONTROLLED:
 		description += " Controlled"
+	elif relationship_with_player1 == Relationship.GOAL:
+		description += " Goal"
 	if relationship_with_player2 == Relationship.GHOST:
 		description += " Ghost"
 	elif relationship_with_player2 == Relationship.MOVABLE:
@@ -119,6 +129,8 @@ func apply_name() -> void:
 		description += " Immovable"
 	elif relationship_with_player2 == Relationship.CONTROLLED:
 		description += " Controlled"
+	elif relationship_with_player2 == Relationship.GOAL:
+		description += " Goal"
 	name = description
 	$Label.text = description.replace(" ", "\n")
 
@@ -132,7 +144,7 @@ func apply_relationship_with_players() -> void:
 		set_collision_mask_value(1, false)
 	if relationship_with_player2 == Relationship.CONTROLLED:
 		set_collision_mask_value(2, false)
-	# Remove Ghost layers
+	# Remove Ghost layers (GOAL keeps collision so raycast detects it)
 	if relationship_with_player1 == Relationship.GHOST:
 		set_collision_layer_value(2, false)
 	if relationship_with_player2 == Relationship.GHOST:
@@ -196,6 +208,8 @@ func _ready() -> void:
 	renamed.connect(_on_renamed)
 
 func _exit_tree() -> void:
+	if escaped:
+		return  # Never registered at current position; unregister would erase the Goal
 	_unregister_at_map_coords()
 
 ## Returns the TileMapLayer this Entity lives in (parent).
@@ -264,8 +278,12 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 	if neighbor == null:
 		return false  # Hit non-Entity (e.g. tilemap collision)
 
+	var rel := neighbor._get_relationship_for_pusher(pusher_player_id)
+	# GOAL: CONTROLLED can move into (escape).
+	if rel == Relationship.GOAL:
+		return true
 	# Only MOVABLE can be pushed; IMMOVABLE blocks. GHOST/same-player CONTROLLED excluded by mask.
-	if neighbor._get_relationship_for_pusher(pusher_player_id) == Relationship.MOVABLE:
+	if rel == Relationship.MOVABLE:
 		return neighbor.can_move(direction, pusher_player_id)
 	return false
 
@@ -286,6 +304,7 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	var my_coords := get_map_coords()
 	var new_coords := layer.get_neighbor_cell(my_coords, direction)
 	var neighbor := Globals.get_entity_at(new_coords) as Entity
+	var is_moving_into_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled() and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled()
 
 	# Push MOVABLE neighbor first (recursive chain: farthest entity moves first)
 	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.MOVABLE:
@@ -298,7 +317,8 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 
 	# Now move self
 	Globals.unregister_entity(my_coords)
-	Globals.register_entity(new_coords, self)
+	if not is_moving_into_goal:
+		Globals.register_entity(new_coords, self)
 
 	var target_position := layer.map_to_local(new_coords)
 
@@ -308,6 +328,21 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	current_tween.tween_property(self, "position", target_position, tween_properties.duration)
 	await current_tween.finished
 	current_tween = null
+
+	if is_moving_into_goal:
+		if not GOAL_REUSABLE:
+			Globals.unregister_entity(new_coords)
+			neighbor.queue_free()
+		_disable_for_escape()
+		exit_sfx.play()
+		await exit_sfx.finished
+		var remaining_players: int = Globals.count_controlled_entities()
+		if remaining_players == 0:
+			var game = get_tree().current_scene
+			if game.has_method("_on_win_level"):
+				game._on_win_level()
+		queue_free()
+		return true
 
 	if _is_controlled():
 		move_sfx.play()
@@ -331,8 +366,17 @@ func try_move(direction: Vector2, pusher_player_id: int) -> bool:
 
 	return await move(cell_dir)
 
+func _disable_for_escape() -> void:
+	escaped = true
+	collision_layer = 0
+	collision_mask = 0
+	set_process_unhandled_input(false)
+	set_physics_process(false)
+
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint():
+		return
+	if escaped:
 		return
 	if not _is_controlled():
 		return
@@ -350,6 +394,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			return
 
 func _physics_process(_delta: float) -> void:
+	if escaped:
+		return
 	if not _is_controlled():
 		return
 	if _queued_direction == Vector2.ZERO or is_moving:
@@ -367,4 +413,6 @@ func _do_controlled_move(direction: Vector2, pusher_player_id: int) -> void:
 	is_moving = false
 
 func _is_controlled() -> bool:
+	if escaped:
+		return false
 	return relationship_with_player1 == Relationship.CONTROLLED or relationship_with_player2 == Relationship.CONTROLLED
