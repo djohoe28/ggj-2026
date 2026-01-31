@@ -89,52 +89,58 @@ var _queued_pusher_id: int = 0
 var is_moving: bool = false
 
 func apply_name() -> void:
+	var description: String = ""
 	if visible_to_player1 and visible_to_player2:
-		name = "Both"
+		description += "Both"
 	elif visible_to_player1:
-		name = "Blue"
+		description += "Blue"
 	elif visible_to_player2:
-		name = "Red"
+		description += "Red"
 	else:
-		name = "None"
+		description += "None"
 	if relationship_with_player1 == Relationship.GHOST:
-		name += " Ghost"
+		description += " Ghost"
 	elif relationship_with_player1 == Relationship.MOVABLE:
-		name += " Movable"
+		description += " Movable"
 	elif relationship_with_player1 == Relationship.IMMOVABLE:
-		name += " Immovable"
+		description += " Immovable"
 	elif relationship_with_player1 == Relationship.CONTROLLED:
-		name += " Controlled"
+		description += " Controlled"
 	if relationship_with_player2 == Relationship.GHOST:
-		name += " Ghost"
+		description += " Ghost"
 	elif relationship_with_player2 == Relationship.MOVABLE:
-		name += " Movable"
+		description += " Movable"
 	elif relationship_with_player2 == Relationship.IMMOVABLE:
-		name += " Immovable"
+		description += " Immovable"
 	elif relationship_with_player2 == Relationship.CONTROLLED:
-		name += " Controlled"
-	name = name.replace(" ", "_")
-	$Label.text = name.replace("_", "\n")
+		description += " Controlled"
+	name = description
+	$Label.text = description.replace(" ", "\n")
 
 func apply_relationship_with_players() -> void:
 	match relationship_with_player1:
 		Relationship.GHOST:
 			# Remove from Collision Layer 1.
-			collision_layer &= ~1
-			collision_mask &= ~1
+			set_collision_layer_value(1, false)
+			set_collision_mask_value(1, false)
 		Relationship.MOVABLE, Relationship.IMMOVABLE, Relationship.CONTROLLED:
 			# Add to Collision Layer 1.
-			collision_layer |= 1
-			collision_mask |= 1
+			set_collision_layer_value(1, true)
+			set_collision_mask_value(1, true)
 	match relationship_with_player2:
 		Relationship.GHOST:
 			# Remove from Collision Layer 2.
-			collision_layer &= ~2
-			collision_mask &= ~2
+			set_collision_layer_value(2, false)
+			set_collision_mask_value(2, false)
 		Relationship.MOVABLE, Relationship.IMMOVABLE, Relationship.CONTROLLED:
 			# Add to Collision Layer 2.
-			collision_layer |= 2
-			collision_mask |= 2
+			set_collision_layer_value(2, true)
+			set_collision_mask_value(2, true)
+	var is_controlled: bool = relationship_with_player1 == Relationship.CONTROLLED or relationship_with_player2 == Relationship.CONTROLLED
+	var is_ghost: bool = relationship_with_player1 == Relationship.GHOST and relationship_with_player2 == Relationship.GHOST
+	var is_solid: bool = !is_controlled and !is_ghost
+	set_collision_layer_value(3, is_solid)
+	set_collision_mask_value(3, is_solid)
 	apply_name()
 
 func apply_visibility_for_players() -> void:

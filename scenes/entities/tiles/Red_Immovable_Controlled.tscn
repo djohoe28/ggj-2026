@@ -1,18 +1,9 @@
-[gd_scene format=3 uid="uid://by40kn7emfhwd"]
+[gd_scene load_steps=2 format=3 uid="uid://b5jwqcnkphbox"]
 
 [ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_entity"]
 
-[node name="Red_Immovable_Controlled" unique_id=1284932722 instance=ExtResource("1_entity")]
-collision_layer = 3
-collision_mask = 3
+[node name="Red_Immovable_Controlled" type="StaticBody2D" unique_id=1284932722 instance=ExtResource("1_entity")]
 visible_to_player1 = false
+visible_to_player2 = true
 relationship_with_player1 = 2
 relationship_with_player2 = 3
-
-[node name="Sprite2D" parent="." index="0" unique_id=360626508]
-color_key = 1
-
-[node name="Label" parent="." index="2" unique_id=149673527]
-text = "Red
-Immovable
-Controlled"

@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 enum ColorFlag {
@@ -19,8 +20,8 @@ var entity_at_coords: Dictionary = {}  # Vector2i -> Entity
 
 var colors := {
 	ColorFlag.NONE: Color.WHITE,
-	ColorFlag.RED: Color(55, 252, 255),
-	ColorFlag.BLUE: Color(255, 196, 250),
+	ColorFlag.RED: Color8(55, 252, 255),
+	ColorFlag.BLUE: Color8(255, 196, 250),
 	ColorFlag.BOTH: Color.BLACK
 }
 

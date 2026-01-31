@@ -16,9 +16,9 @@ width = 60
 height = 60
 fill_to = Vector2(1, 1)
 
-[node name="Both_Ghost_Ghost" type="StaticBody2D" unique_id=1284932722]
-collision_layer = 0
-collision_mask = 0
+[node name="Both Ghost Ghost" type="StaticBody2D" unique_id=1284932722]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_7agfi")
 tween_properties = ExtResource("2_7sg2j")
 
