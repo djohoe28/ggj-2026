@@ -81,6 +81,11 @@ signal pushed(controller: Entity, collider: Entity, direction: Vector2)
 
 @export var tween_properties: TweenProperties
 
+@onready var move_sfx: AudioStreamPlayer2D = $MoveSFX
+@onready var push_sfx: AudioStreamPlayer2D = $PushSFX
+@onready var block_sfx: AudioStreamPlayer2D = $BlockSFX
+@onready var exit_sfx: AudioStreamPlayer2D = $ExitSFX
+
 var current_tween: Tween = null
 
 ## Queue for CONTROLLED entities (direction, pusher_player_id).
@@ -269,6 +274,8 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 ## Returns true if move succeeded, false if blocked.
 func move(direction: TileSet.CellNeighbor) -> bool:
 	if not can_move(direction, Globals.pusher_player_id):
+		if _is_controlled():
+			block_sfx.play()
 		blocked.emit(self, direction)
 		return false
 
@@ -284,6 +291,8 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.MOVABLE:
 		var success := await neighbor.move(direction)
 		if not success:
+			if _is_controlled():
+				block_sfx.play()
 			blocked.emit(self, direction)
 			return false
 
@@ -300,6 +309,10 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	await current_tween.finished
 	current_tween = null
 
+	if _is_controlled():
+		move_sfx.play()
+	else:
+		push_sfx.play()
 	moved.emit(self, direction)
 	return true
 
