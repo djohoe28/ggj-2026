@@ -62,6 +62,32 @@ static func cell_neighbor_to_vector(n: TileSet.CellNeighbor) -> Vector2:
 			return Vector2.DOWN
 	return Vector2.RIGHT # fallback
 
+## Returns display string for visibility (Both, Blue, Red, None).
+static func visibility_to_string(visible_p1: bool, visible_p2: bool) -> String:
+	if visible_p1 and visible_p2:
+		return "Both"
+	elif visible_p1:
+		return "Blue"
+	elif visible_p2:
+		return "Red"
+	else:
+		return "None"
+
+## Returns display string for Relationship enum.
+static func relationship_to_string(rel: Relationship) -> String:
+	match rel:
+		Relationship.GHOST:
+			return "Ghost"
+		Relationship.MOVABLE:
+			return "Movable"
+		Relationship.IMMOVABLE:
+			return "Immovable"
+		Relationship.CONTROLLED:
+			return "Controlled"
+		Relationship.GOAL:
+			return "Goal"
+	return "Ghost"
+
 signal moved(entity: Entity, direction: TileSet.CellNeighbor)
 signal blocked(entity: Entity, direction: TileSet.CellNeighbor)
 ## Emitted when a CONTROLLED entity successfully pushes another Entity.
@@ -102,35 +128,9 @@ var is_moving: bool = false
 var escaped: bool = false
 
 func apply_name() -> void:
-	var description: String = ""
-	if visible_to_player1 and visible_to_player2:
-		description += "Both"
-	elif visible_to_player1:
-		description += "Blue"
-	elif visible_to_player2:
-		description += "Red"
-	else:
-		description += "None"
-	if relationship_with_player1 == Relationship.GHOST:
-		description += " Ghost"
-	elif relationship_with_player1 == Relationship.MOVABLE:
-		description += " Movable"
-	elif relationship_with_player1 == Relationship.IMMOVABLE:
-		description += " Immovable"
-	elif relationship_with_player1 == Relationship.CONTROLLED:
-		description += " Controlled"
-	elif relationship_with_player1 == Relationship.GOAL:
-		description += " Goal"
-	if relationship_with_player2 == Relationship.GHOST:
-		description += " Ghost"
-	elif relationship_with_player2 == Relationship.MOVABLE:
-		description += " Movable"
-	elif relationship_with_player2 == Relationship.IMMOVABLE:
-		description += " Immovable"
-	elif relationship_with_player2 == Relationship.CONTROLLED:
-		description += " Controlled"
-	elif relationship_with_player2 == Relationship.GOAL:
-		description += " Goal"
+	var description := visibility_to_string(visible_to_player1, visible_to_player2)
+	description += " " + relationship_to_string(relationship_with_player1)
+	description += " " + relationship_to_string(relationship_with_player2)
 	name = description
 	$Label.text = description.replace(" ", "\n")
 
@@ -155,48 +155,15 @@ func apply_relationship_with_players() -> void:
 func apply_visibility_for_players() -> void:
 	if visible_to_player1 and visible_to_player2:
 		$Sprite2D.color_key = Globals.ColorFlag.BOTH
-		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BOTH]
 	elif visible_to_player1:
 		$Sprite2D.color_key = Globals.ColorFlag.BLUE
-		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.BLUE]
 	elif visible_to_player2:
 		$Sprite2D.color_key = Globals.ColorFlag.RED
-		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.RED]
 	else:
 		$Sprite2D.color_key = Globals.ColorFlag.NONE
-		# $Sprite2D.modulate = Globals.color_settings[Globals.ColorFlag.NONE]
 	apply_name()
 
 func _on_renamed() -> void:
-	pass
-	# var _color: String = "Default"
-	# var _type: String = name
-	# if name.count(" ") > 0:
-	# 	_color = name.split(" ")[0]
-	# 	match _color:
-	# 		"Blue":
-	# 			$Sprite2D.color_key = Globals.ColorFlag.BLUE
-	# 		"Red":
-	# 			$Sprite2D.color_key = Globals.ColorFlag.RED
-	# 		"Both":
-	# 			$Sprite2D.color_key = Globals.ColorFlag.BOTH
-	# 		"None":
-	# 			$Sprite2D.color_key = Globals.ColorFlag.NONE
-	# 	_type = name.split(" ")[1]
-	# match _type:
-	# 	"Box":
-	# 		relationship_with_player1 = Relationship.MOVABLE
-	# 		relationship_with_player2 = Relationship.MOVABLE
-	# 	"Wall":
-	# 		relationship_with_player1 = Relationship.IMMOVABLE
-	# 		relationship_with_player2 = Relationship.IMMOVABLE
-	# 	"Player":
-	# 		relationship_with_player1 = Relationship.CONTROLLED
-	# 		relationship_with_player2 = Relationship.CONTROLLED
-	# 	_:
-	# 		relationship_with_player1 = Relationship.GHOST
-	# 		relationship_with_player2 = Relationship.GHOST
-	# $Label.text = _color + "\n" + _type
 	pass
 
 func _ready() -> void:
@@ -254,7 +221,7 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 		return false
 
 	# Configure RayCast: aim in direction, length = one tile
-	var tile_size := Vector2(64, 64)
+	var tile_size := Globals.TILE_SIZE
 	if layer.tile_set != null:
 		tile_size = Vector2(layer.tile_set.tile_size)
 	var dir_vec := cell_neighbor_to_vector(direction) * tile_size
@@ -304,7 +271,7 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	var my_coords := get_map_coords()
 	var new_coords := layer.get_neighbor_cell(my_coords, direction)
 	var neighbor := Globals.get_entity_at(new_coords) as Entity
-	var is_moving_into_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled() and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled()
+	var is_moving_into_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL and _is_controlled()
 
 	# Push MOVABLE neighbor first (recursive chain: farthest entity moves first)
 	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.MOVABLE:

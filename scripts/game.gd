@@ -21,6 +21,8 @@ func _on_win_level() -> void:
 	load_level()
 
 func load_level() -> void:
+	if current_level >= levels.size():
+		current_level = 0
 	var level = levels[current_level].instantiate()
 	for child in level_container.get_children():
 		child.queue_free()

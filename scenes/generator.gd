@@ -13,44 +13,7 @@ func generate():
 		for visible_to_player2 in [true, false]:
 			for relationship_with_player1 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED, Entity.Relationship.GOAL]:
 				for relationship_with_player2 in [Entity.Relationship.GHOST, Entity.Relationship.MOVABLE, Entity.Relationship.IMMOVABLE, Entity.Relationship.CONTROLLED, Entity.Relationship.GOAL]:
-					# Determine the name of the Entity.
-					var _color: String
-					if visible_to_player1 and visible_to_player2:
-						_color = "Both"
-					elif visible_to_player1:
-						_color = "Blue"
-					elif visible_to_player2:
-						_color = "Red"
-					else:
-						_color = "None"
-
-					var _type1: String
-					match relationship_with_player1:
-						Entity.Relationship.GHOST:
-							_type1 = "Ghost"
-						Entity.Relationship.MOVABLE:
-							_type1 = "Movable"
-						Entity.Relationship.IMMOVABLE:
-							_type1 = "Immovable"
-						Entity.Relationship.CONTROLLED:
-							_type1 = "Controlled"
-						Entity.Relationship.GOAL:
-							_type1 = "Goal"
-
-					var _type2: String
-					match relationship_with_player2:
-						Entity.Relationship.GHOST:
-							_type2 = "Ghost"
-						Entity.Relationship.MOVABLE:
-							_type2 = "Movable"
-						Entity.Relationship.IMMOVABLE:
-							_type2 = "Immovable"
-						Entity.Relationship.CONTROLLED:
-							_type2 = "Controlled"
-						Entity.Relationship.GOAL:
-							_type2 = "Goal"
-
-					var entity_name := _color + "_" + _type1 + "_" + _type2
+					var entity_name := Entity.visibility_to_string(visible_to_player1, visible_to_player2) + "_" + Entity.relationship_to_string(relationship_with_player1) + "_" + Entity.relationship_to_string(relationship_with_player2)
 					var output_path := ENTITY_OUTPUT_DIR + entity_name + ".tscn"
 
 					# Create inherited scene content: root node instances entity.tscn with overrides.

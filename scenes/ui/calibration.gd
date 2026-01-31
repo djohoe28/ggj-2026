@@ -8,4 +8,6 @@ func _on_visibility_changed() -> void:
 	$Control.visible = visible
 
 func _on_button_pressed() -> void:
-	get_parent().get_parent()._on_win_level()
+	var game := get_tree().current_scene
+	if game.has_method("_on_win_level"):
+		game._on_win_level()

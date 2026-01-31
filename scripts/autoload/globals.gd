@@ -50,6 +50,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 
-func update_color(color_flag: ColorFlag, color: Color):
+func update_color(color_flag: ColorFlag, color: Color) -> void:
 	colors[color_flag] = color
 	color_updated.emit(color_flag)

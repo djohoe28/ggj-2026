@@ -31,10 +31,6 @@ folder_colors={
 "res://scripts/": "green"
 }
 
-[global_group]
-
-Pushable=""
-
 [input]
 
 debug={
