@@ -1,11 +1,22 @@
 [gd_scene format=3 uid="uid://ba21nkhfxgbs8"]
 
 [ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_mkled"]
+[ext_resource type="Texture2D" uid="uid://b0ra1a3iwoxas" path="res://assets/graphics/lowres/blank.png" id="2_urode"]
+[ext_resource type="Texture2D" uid="uid://dtp5wkuncc2e7" path="res://assets/graphics/lowres/cheese-country.png" id="3_qiqpb"]
 
-[node name="P2 Box V2" unique_id=1284932722 instance=ExtResource("1_mkled")]
+[node name="P2 Box" unique_id=1284932722 instance=ExtResource("1_mkled")]
 collision_layer = 7
 entity_kind = 3
 
-[node name="Label" parent="." index="2" unique_id=149673527]
+[node name="Sprite2D" parent="." index="0" unique_id=360626508]
+scale = Vector2(2, 2)
+texture = ExtResource("2_urode")
+
+[node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
+scale = Vector2(2, 2)
+texture = ExtResource("3_qiqpb")
+
+[node name="Label" parent="." index="3" unique_id=149673527]
+visible = false
 text = "P2 Movable
 P2 Visible"

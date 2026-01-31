@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cs6ahkkjcxle5"]
 
 [ext_resource type="Script" uid="uid://duusk8mnnqfo7" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cmk84w5mv16v6" path="res://scenes/Title.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://q1xf6auc6u0v" path="res://scenes/ui/calibration.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://1hed0vbt6yod" path="res://scenes/levels/level_demo.tscn" id="3_lbhrr"]
 
@@ -13,9 +14,9 @@ gradient = SubResource("Gradient_lnu2h")
 [node name="Game" type="Node2D" unique_id=1227616372]
 script = ExtResource("1_yqjtg")
 none = Color(1, 1, 1, 1)
-blue = Color(0.21568628, 0.9882353, 1, 1)
-red = Color(1, 0.76862746, 0.98039216, 1)
-levels = Array[PackedScene]([ExtResource("2_lnu2h"), ExtResource("3_lbhrr")])
+blue = Color(0.39215687, 0.9882353, 1, 1)
+red = Color(1, 0.76862746, 1, 1)
+levels = Array[PackedScene]([ExtResource("2_lbhrr"), ExtResource("2_lnu2h"), ExtResource("3_lbhrr")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=829129142]
 position = Vector2(576, 319.75)
