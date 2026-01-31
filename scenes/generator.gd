@@ -4,7 +4,7 @@ extends Node
 const ENTITY_BASE_PATH := "res://scenes/entities/entity.tscn"
 const ENTITY_BASE_UID := "uid://r0hndivp7jre"
 const ENTITY_ROOT_UNIQUE_ID := 1284932722
-const ENTITY_OUTPUT_DIR := "res://scenes/entities/"
+const ENTITY_OUTPUT_DIR := "res://scenes/entities/tiles/"
 
 @export_tool_button("Generate Entities") var generate_action = generate
 

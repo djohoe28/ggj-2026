@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 enum ColorFlag {
@@ -8,7 +7,7 @@ enum ColorFlag {
 	BOTH = RED | BLUE
 }
 
-const TILE_SIZE := Vector2(64, 64)
+const TILE_SIZE := Vector2(60, 60)
 
 ## Player ID used when checking entity relationships (1 = Blue/P1, 2 = Red/P2).
 ## Set by the Player before attempting a push so Entity.can_move knows which relationship to use.
@@ -20,8 +19,8 @@ var entity_at_coords: Dictionary = {}  # Vector2i -> Entity
 
 var colors := {
 	ColorFlag.NONE: Color.WHITE,
-	ColorFlag.RED: Color.RED,
-	ColorFlag.BLUE: Color.BLUE,
+	ColorFlag.RED: Color(55, 252, 255),
+	ColorFlag.BLUE: Color(255, 196, 250),
 	ColorFlag.BOTH: Color.BLACK
 }
 

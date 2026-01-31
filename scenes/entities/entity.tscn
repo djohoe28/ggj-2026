@@ -4,6 +4,7 @@
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="1_wcjeu"]
 [ext_resource type="Resource" uid="uid://e37gox3u4f5c" path="res://assets/position_tween_properties.tres" id="2_7sg2j"]
 [ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="3_7sg2j"]
+[ext_resource type="LabelSettings" uid="uid://byc8yqo5vl517" path="res://assets/debug_label_settings.tres" id="5_366ky"]
 
 [sub_resource type="Gradient" id="Gradient_ml14j"]
 offsets = PackedFloat32Array(1)
@@ -11,6 +12,8 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wcjeu"]
 gradient = SubResource("Gradient_ml14j")
+width = 60
+height = 60
 fill_to = Vector2(1, 1)
 
 [node name="Both_Ghost_Ghost" type="StaticBody2D" unique_id=1284932722]
@@ -20,6 +23,7 @@ script = ExtResource("1_7agfi")
 tween_properties = ExtResource("2_7sg2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
+modulate = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_wcjeu")
 script = ExtResource("3_7sg2j")
 
@@ -36,5 +40,6 @@ grow_vertical = 2
 text = "Both
 Ghost
 Ghost"
+label_settings = ExtResource("5_366ky")
 horizontal_alignment = 1
 vertical_alignment = 1

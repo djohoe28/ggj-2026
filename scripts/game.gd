@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var none: Color = Color.WHITE
-@export var blue: Color = Color.BLUE
-@export var red: Color = Color.RED
-@export var both: Color = Color.BLACK
+@export var none: Color = Globals.colors[Globals.ColorFlag.NONE]
+@export var blue: Color = Globals.colors[Globals.ColorFlag.BLUE]
+@export var red: Color = Globals.colors[Globals.ColorFlag.RED]
+@export var both: Color = Globals.colors[Globals.ColorFlag.BOTH]
 
 @export var levels: Array[PackedScene]
 @export var current_level: int = 0
