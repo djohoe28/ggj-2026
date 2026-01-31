@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn2fi7vwolkeu"]
-
-[ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_entity"]
-
-[node name="Both_Movable_Controlled" type="StaticBody2D" unique_id=1284932722 instance=ExtResource("1_entity")]
-visible_to_player1 = true
-visible_to_player2 = true
-relationship_with_player1 = 1
-relationship_with_player2 = 3

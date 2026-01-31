@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://i52ktbvwao7k"]
+
+[ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_27mmx"]
+
+[node name="P2_Box" type="StaticBody2D" unique_id=1284932722 instance=ExtResource("1_27mmx")]
+entity_kind = 3

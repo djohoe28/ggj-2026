@@ -40,9 +40,10 @@ random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("9_0btt7")
 
-[node name="Both Ghost Ghost" type="StaticBody2D" unique_id=1284932722]
+[node name="Wall" type="StaticBody2D" unique_id=1284932722]
 collision_layer = 4
 collision_mask = 7
+entity_kind = 0
 script = ExtResource("1_7agfi")
 tween_properties = ExtResource("2_7sg2j")
 
@@ -61,9 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Both
-Ghost
-Ghost"
+text = "Wall"
 label_settings = ExtResource("5_366ky")
 horizontal_alignment = 1
 vertical_alignment = 1

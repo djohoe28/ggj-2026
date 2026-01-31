@@ -2,15 +2,22 @@
 extends StaticBody2D
 class_name Entity
 
-## How this Entity interacts with each Player.
-## GHOST: does not block movement. MOVABLE: can be pushed. IMMOVABLE: blocks movement.
-## CONTROLLED: responds to the respective player's Input actions (p1_*, p2_*).
-## GOAL: CONTROLLED entities that move into a Goal escape (freed from the scene).
+## Fixed entity types. Each maps to per-player relationship (Movable/Immovable/Controlled/Goal).
 ## When true, multiple Players can escape from the same Goal. When false, the Goal is consumed by the first Player.
 const GOAL_REUSABLE: bool = true
 
-enum Relationship {
-	GHOST = 0,
+enum EntityKind {
+	WALL,    ## Immovable P1, Immovable P2
+	BOX,     ## Movable P1, Movable P2
+	P1_BOX,  ## Movable P1, Immovable P2
+	P2_BOX,  ## Immovable P1, Movable P2
+	P1_BODY, ## Controlled P1, Immovable P2
+	P2_BODY, ## Immovable P1, Controlled P2
+	GOAL     ## Goal P1, Goal P2
+}
+
+## Internal: effective relationship for movement logic (derived from EntityKind per pusher).
+enum _Relationship {
 	MOVABLE = 1,
 	IMMOVABLE = 2,
 	CONTROLLED = 3,
@@ -62,53 +69,34 @@ static func cell_neighbor_to_vector(n: TileSet.CellNeighbor) -> Vector2:
 			return Vector2.DOWN
 	return Vector2.RIGHT # fallback
 
-## Returns display string for visibility (Both, Blue, Red, None).
-static func visibility_to_string(visible_p1: bool, visible_p2: bool) -> String:
-	if visible_p1 and visible_p2:
-		return "Both"
-	elif visible_p1:
-		return "Blue"
-	elif visible_p2:
-		return "Red"
-	else:
-		return "None"
-
-## Returns display string for Relationship enum.
-static func relationship_to_string(rel: Relationship) -> String:
-	match rel:
-		Relationship.GHOST:
-			return "Ghost"
-		Relationship.MOVABLE:
-			return "Movable"
-		Relationship.IMMOVABLE:
-			return "Immovable"
-		Relationship.CONTROLLED:
-			return "Controlled"
-		Relationship.GOAL:
+## Returns display string for EntityKind.
+static func entity_kind_to_string(kind: EntityKind) -> String:
+	match kind:
+		EntityKind.WALL:
+			return "Wall"
+		EntityKind.BOX:
+			return "Box"
+		EntityKind.P1_BOX:
+			return "P1 Box"
+		EntityKind.P2_BOX:
+			return "P2 Box"
+		EntityKind.P1_BODY:
+			return "P1 Body"
+		EntityKind.P2_BODY:
+			return "P2 Body"
+		EntityKind.GOAL:
 			return "Goal"
-	return "Ghost"
+	return "Wall"
 
 signal moved(entity: Entity, direction: TileSet.CellNeighbor)
 signal blocked(entity: Entity, direction: TileSet.CellNeighbor)
 ## Emitted when a CONTROLLED entity successfully pushes another Entity.
 signal pushed(controller: Entity, collider: Entity, direction: Vector2)
 
-@export var visible_to_player1: bool = true:
+@export var entity_kind: EntityKind = EntityKind.WALL:
 	set(value):
-		visible_to_player1 = value
-		apply_visibility_for_players()
-@export var visible_to_player2: bool = true:
-	set(value):
-		visible_to_player2 = value
-		apply_visibility_for_players()
-@export var relationship_with_player1: Relationship = Relationship.GHOST:
-	set(value):
-		relationship_with_player1 = value
-		apply_relationship_with_players()
-@export var relationship_with_player2: Relationship = Relationship.GHOST:
-	set(value):
-		relationship_with_player2 = value
-		apply_relationship_with_players()
+		entity_kind = value
+		apply_from_kind()
 
 @export var tween_properties: TweenProperties
 
@@ -127,49 +115,36 @@ var is_moving: bool = false
 ## When true, entity has escaped into a Goal: no input, no collision, awaiting free.
 var escaped: bool = false
 
-func apply_name() -> void:
-	var description := visibility_to_string(visible_to_player1, visible_to_player2)
-	description += " " + relationship_to_string(relationship_with_player1)
-	description += " " + relationship_to_string(relationship_with_player2)
+func apply_from_kind() -> void:
+	var description := entity_kind_to_string(entity_kind)
 	name = description
 	$Label.text = description.replace(" ", "\n")
-
-func apply_relationship_with_players() -> void:
-	# Initialize all layers and masks to true
+	# Collision layers: 1=P1, 2=P2, 3=Solid. All entities on layer 3.
 	for i in range(1, 4):
 		set_collision_layer_value(i, true)
 		set_collision_mask_value(i, true)
-	# Remove Player masks
-	if relationship_with_player1 == Relationship.CONTROLLED:
+	# P1_BODY excludes layer 1 from mask (same-player pass-through)
+	if entity_kind == EntityKind.P1_BODY:
 		set_collision_mask_value(1, false)
-	if relationship_with_player2 == Relationship.CONTROLLED:
+	# P2_BODY excludes layer 2 from mask (same-player pass-through)
+	if entity_kind == EntityKind.P2_BODY:
 		set_collision_mask_value(2, false)
-	# Remove Ghost layers (GOAL keeps collision so raycast detects it)
-	if relationship_with_player1 == Relationship.GHOST:
-		set_collision_layer_value(2, false)
-	if relationship_with_player2 == Relationship.GHOST:
-		set_collision_layer_value(1, false)
 	$RayCast2D.collision_mask = collision_mask
-	apply_name()
-
-func apply_visibility_for_players() -> void:
-	if visible_to_player1 and visible_to_player2:
-		$Sprite2D.color_key = Globals.ColorFlag.BOTH
-	elif visible_to_player1:
-		$Sprite2D.color_key = Globals.ColorFlag.BLUE
-	elif visible_to_player2:
-		$Sprite2D.color_key = Globals.ColorFlag.RED
-	else:
-		$Sprite2D.color_key = Globals.ColorFlag.NONE
-	apply_name()
+	# Color: P1_BODY=Blue, P2_BODY=Red, others=Both
+	match entity_kind:
+		EntityKind.P1_BODY:
+			$Sprite2D.color_key = Globals.ColorFlag.BLUE
+		EntityKind.P2_BODY:
+			$Sprite2D.color_key = Globals.ColorFlag.RED
+		_:
+			$Sprite2D.color_key = Globals.ColorFlag.BOTH
 
 func _on_renamed() -> void:
 	pass
 
 func _ready() -> void:
 	# Defer so TileMapLayer has finished positioning scene tiles (batched at end of frame)
-	apply_relationship_with_players()
-	apply_visibility_for_players()
+	apply_from_kind()
 	await get_tree().process_frame
 	call_deferred("_register_at_map_coords")
 	renamed.connect(_on_renamed)
@@ -204,9 +179,24 @@ func _unregister_at_map_coords() -> void:
 	if layer != null:
 		Globals.unregister_entity(get_map_coords())
 
-## Returns the neighbor's Relationship for the given pusher (1 = Blue/P1, 2 = Red/P2).
-func _get_relationship_for_pusher(pusher_player_id: int) -> Relationship:
-	return relationship_with_player1 if pusher_player_id == 1 else relationship_with_player2
+## Returns this entity's effective relationship for the given pusher (1 = Blue/P1, 2 = Red/P2).
+func _get_relationship_for_pusher(pusher_player_id: int) -> _Relationship:
+	match entity_kind:
+		EntityKind.WALL:
+			return _Relationship.IMMOVABLE
+		EntityKind.BOX:
+			return _Relationship.MOVABLE
+		EntityKind.P1_BOX:
+			return _Relationship.MOVABLE if pusher_player_id == 1 else _Relationship.IMMOVABLE
+		EntityKind.P2_BOX:
+			return _Relationship.IMMOVABLE if pusher_player_id == 1 else _Relationship.MOVABLE
+		EntityKind.P1_BODY:
+			return _Relationship.CONTROLLED if pusher_player_id == 1 else _Relationship.IMMOVABLE
+		EntityKind.P2_BODY:
+			return _Relationship.IMMOVABLE if pusher_player_id == 1 else _Relationship.CONTROLLED
+		EntityKind.GOAL:
+			return _Relationship.GOAL
+	return _Relationship.IMMOVABLE
 
 ## Iteratively checks whether self can move in the given direction.
 ## Uses $RayCast2D with collision_mask aligned to pusher (GHOST/CONTROLLED-by-same-player excluded).
@@ -249,11 +239,11 @@ func can_move(direction: TileSet.CellNeighbor, pusher_player_id: int = 1) -> boo
 		return false  # Hit non-Entity (e.g. tilemap collision)
 
 	var rel := neighbor._get_relationship_for_pusher(pusher_player_id)
-	# GOAL: CONTROLLED can move into (escape).
-	if rel == Relationship.GOAL:
-		return true
-	# Only MOVABLE can be pushed; IMMOVABLE blocks. GHOST/same-player CONTROLLED excluded by mask.
-	if rel == Relationship.MOVABLE:
+	# GOAL: Only Players (CONTROLLED) can move into Goals. Boxes cannot.
+	if rel == _Relationship.GOAL:
+		return _is_controlled()
+	# Only MOVABLE can be pushed; IMMOVABLE blocks.
+	if rel == _Relationship.MOVABLE:
 		return neighbor.can_move(direction, pusher_player_id)
 	return false
 
@@ -274,11 +264,11 @@ func move(direction: TileSet.CellNeighbor) -> bool:
 	var my_coords := get_map_coords()
 	var new_coords := layer.get_neighbor_cell(my_coords, direction)
 	var neighbor := Globals.get_entity_at(new_coords) as Entity
-	var neighbor_is_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.GOAL
+	var neighbor_is_goal := neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == _Relationship.GOAL
 	var is_moving_into_goal := neighbor_is_goal and _is_controlled()
 
 	# Push MOVABLE neighbor first (recursive chain: farthest entity moves first)
-	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == Relationship.MOVABLE:
+	if neighbor != null and neighbor._get_relationship_for_pusher(Globals.pusher_player_id) == _Relationship.MOVABLE:
 		var success := await neighbor.move(direction)
 		if not success:
 			if _is_controlled():
@@ -333,7 +323,7 @@ func try_move(direction: Vector2, pusher_player_id: int) -> bool:
 		var my_coords := get_map_coords()
 		var new_coords := layer.get_neighbor_cell(my_coords, cell_dir)
 		var neighbor := Globals.get_entity_at(new_coords) as Entity
-		if neighbor != null and neighbor != self and neighbor._get_relationship_for_pusher(pusher_player_id) == Relationship.MOVABLE:
+		if neighbor != null and neighbor != self and neighbor._get_relationship_for_pusher(pusher_player_id) == _Relationship.MOVABLE:
 			pushed.emit(self, neighbor, direction)
 
 	return await move(cell_dir)
@@ -360,7 +350,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			var data: Array = ACTION_TO_PLAYER_AND_DIRECTION[action]
 			var player_id: int = data[0]
 			var direction: Vector2 = data[1]
-			if _get_relationship_for_pusher(player_id) == Relationship.CONTROLLED:
+			if _get_relationship_for_pusher(player_id) == _Relationship.CONTROLLED:
 				_queued_direction = direction
 				_queued_pusher_id = player_id
 			return
@@ -387,4 +377,4 @@ func _do_controlled_move(direction: Vector2, pusher_player_id: int) -> void:
 func _is_controlled() -> bool:
 	if escaped:
 		return false
-	return relationship_with_player1 == Relationship.CONTROLLED or relationship_with_player2 == Relationship.CONTROLLED
+	return entity_kind == EntityKind.P1_BODY or entity_kind == EntityKind.P2_BODY
