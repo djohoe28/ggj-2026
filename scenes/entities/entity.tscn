@@ -18,8 +18,8 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wcjeu"]
 gradient = SubResource("Gradient_ml14j")
-width = 30
-height = 30
+width = 60
+height = 60
 fill_to = Vector2(1, 1)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_366ky"]
@@ -51,14 +51,13 @@ tween_properties = ExtResource("2_7sg2j")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
 modulate = Color(0.21568628, 0.9882353, 1, 1)
 material = ExtResource("3_66mt3")
-scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_wcjeu")
 script = ExtResource("3_7sg2j")
+color_key = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1591089347]
 modulate = Color(1, 0.76862746, 0.98039216, 1)
 material = ExtResource("5_0btt7")
-scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_wcjeu")
 script = ExtResource("3_7sg2j")
 color_key = 2

@@ -2,19 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://r0hndivp7jre" path="res://scenes/entities/entity.tscn" id="1_diodt"]
 [ext_resource type="Texture2D" uid="uid://b0ra1a3iwoxas" path="res://assets/graphics/lowres/blank.png" id="2_vxpb2"]
-[ext_resource type="Texture2D" uid="uid://d3hc15ow5sn3w" path="res://assets/graphics/lowres/push-country.png" id="3_vxpb2"]
+[ext_resource type="Texture2D" uid="uid://c0k3wwd6e1rd0" path="res://assets/graphics/noa/push-country.png" id="3_vxpb2"]
 
 [node name="Box" unique_id=1284932722 instance=ExtResource("1_diodt")]
-collision_layer = 7
 entity_kind = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=360626508]
-modulate = Color(0.21568628, 0.9882353, 1, 1)
 texture = ExtResource("2_vxpb2")
 
 [node name="Sprite2D2" parent="." index="1" unique_id=1591089347]
-modulate = Color(1, 0.76862746, 0.98039216, 1)
-scale = Vector2(2, 2)
 texture = ExtResource("3_vxpb2")
 
 [node name="Label" parent="." index="3" unique_id=149673527]

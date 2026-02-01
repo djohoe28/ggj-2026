@@ -8,8 +8,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mmej7"]
 gradient = SubResource("Gradient_6txx4")
-width = 30
-height = 30
+width = 60
+height = 60
 
 [node name="Box" unique_id=1284932722 instance=ExtResource("1_mmej7")]
 entity_kind = 1
