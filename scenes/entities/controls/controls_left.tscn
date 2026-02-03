@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scenes/entities/entity.gd" id="1_r4hcp"]
 [ext_resource type="Resource" uid="uid://e37gox3u4f5c" path="res://assets/position_tween_properties.tres" id="2_0nuby"]
-[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://assets/shaders/p1_material.tres" id="3_swskk"]
 [ext_resource type="Texture2D" uid="uid://4x3ergmtnymb" path="res://assets/tileset_mockup.png" id="4_x1srv"]
-[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/sprite_tint.gd" id="5_vmwsh"]
-[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://assets/shaders/p2_material.tres" id="6_1vlis"]
+[ext_resource type="Script" uid="uid://p4ug5cbs3hvt" path="res://scenes/entities/proxy.gd" id="5_564qk"]
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="7_ohebe"]
 [ext_resource type="LabelSettings" uid="uid://byc8yqo5vl517" path="res://assets/debug_label_settings.tres" id="8_y4ryb"]
 [ext_resource type="AudioStream" uid="uid://3tra5r28g224" path="res://assets/sfx/step.ogg" id="9_uxvpi"]
@@ -33,7 +31,7 @@ random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("12_1e2ve")
 
-[node name="P1 Controls 1" type="StaticBody2D" unique_id=1284932722]
+[node name="Wall" type="StaticBody2D" unique_id=1284932722]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_r4hcp")
@@ -41,22 +39,21 @@ tween_properties = ExtResource("2_0nuby")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
 modulate = Color(0.21568628, 0.9882353, 1, 1)
-material = ExtResource("3_swskk")
 texture = ExtResource("4_x1srv")
 hframes = 5
 vframes = 7
 frame = 22
-script = ExtResource("5_vmwsh")
+script = ExtResource("5_564qk")
+target_viewport_path = NodePath("Game/SubViewportRed")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1591089347]
 modulate = Color(1, 0.76862746, 0.98039216, 1)
-material = ExtResource("6_1vlis")
 texture = ExtResource("4_x1srv")
 hframes = 5
 vframes = 7
 frame = 20
-script = ExtResource("5_vmwsh")
-color_key = 2
+script = ExtResource("5_564qk")
+target_viewport_path = NodePath("Game/SubViewportBlue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477067392]
 visible = false

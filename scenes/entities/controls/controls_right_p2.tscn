@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scenes/entities/entity.gd" id="1_p6wq4"]
 [ext_resource type="Resource" uid="uid://e37gox3u4f5c" path="res://assets/position_tween_properties.tres" id="2_mdymd"]
-[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://assets/shaders/p1_material.tres" id="3_2wkcm"]
 [ext_resource type="Texture2D" uid="uid://4x3ergmtnymb" path="res://assets/tileset_mockup.png" id="4_tp1jn"]
-[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/sprite_tint.gd" id="5_mcnen"]
-[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://assets/shaders/p2_material.tres" id="6_nbged"]
+[ext_resource type="Script" uid="uid://p4ug5cbs3hvt" path="res://scenes/entities/proxy.gd" id="5_33n1m"]
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="7_ihdfe"]
 [ext_resource type="LabelSettings" uid="uid://byc8yqo5vl517" path="res://assets/debug_label_settings.tres" id="8_j1fr7"]
 [ext_resource type="AudioStream" uid="uid://3tra5r28g224" path="res://assets/sfx/step.ogg" id="9_puq88"]
@@ -40,23 +38,21 @@ script = ExtResource("1_p6wq4")
 tween_properties = ExtResource("2_mdymd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360626508]
-material = ExtResource("3_2wkcm")
 texture = ExtResource("4_tp1jn")
 hframes = 5
 vframes = 7
 frame = 24
-script = ExtResource("5_mcnen")
-color_key = 0
+script = ExtResource("5_33n1m")
+target_viewport_path = NodePath("Game/SubViewportRed")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1591089347]
 modulate = Color(1, 0.76862746, 0.98039216, 1)
-material = ExtResource("6_nbged")
 texture = ExtResource("4_tp1jn")
 hframes = 5
 vframes = 7
 frame = 21
-script = ExtResource("5_mcnen")
-color_key = 2
+script = ExtResource("5_33n1m")
+target_viewport_path = NodePath("Game/SubViewportBlue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477067392]
 visible = false

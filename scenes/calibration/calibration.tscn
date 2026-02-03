@@ -12,6 +12,7 @@ tile_map_data = PackedByteArray("AAAPAAQAAAAAAAAADwAQAAUAAAAAAAAADwAQAAQAAAAAAAA
 tile_set = ExtResource("1_83oql")
 
 [node name="Control" type="CanvasLayer" parent="." unique_id=422818143]
+layer = 10
 
 [node name="Control" type="Control" parent="Control" unique_id=2050789439]
 layout_direction = 2

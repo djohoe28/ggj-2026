@@ -1,33 +1,33 @@
 [gd_scene format=3 uid="uid://cmk84w5mv16v6"]
 
-[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://assets/shaders/p1_material.tres" id="1_aa56r"]
 [ext_resource type="Script" uid="uid://3m2yq7ahqk6x" path="res://scenes/title.gd" id="1_agd63"]
 [ext_resource type="Texture2D" uid="uid://dv3gws6awwe4v" path="res://assets/graphics/title-city.png" id="2_agd63"]
-[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/sprite_tint.gd" id="3_mh4yb"]
-[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://assets/shaders/p2_material.tres" id="4_wq2ky"]
+[ext_resource type="Script" uid="uid://p4ug5cbs3hvt" path="res://scenes/entities/proxy.gd" id="2_mh4yb"]
 [ext_resource type="Texture2D" uid="uid://j8fij4fa1q8s" path="res://assets/graphics/title-country.png" id="5_uth7j"]
 
 [node name="Title" type="Node2D" unique_id=677840180]
 script = ExtResource("1_agd63")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1588602323]
+[node name="Node2D" type="Node2D" parent="." unique_id=1057892007]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1588602323]
 modulate = Color(0.21568628, 0.9882353, 1, 1)
-material = ExtResource("1_aa56r")
 position = Vector2(600, 300)
 scale = Vector2(2, 2)
 texture = ExtResource("2_agd63")
-script = ExtResource("3_mh4yb")
+script = ExtResource("2_mh4yb")
+target_viewport_path = NodePath("Game/SubViewportRed")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1017885903]
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1017885903]
 modulate = Color(1, 0.76862746, 0.98039216, 1)
-material = ExtResource("4_wq2ky")
 position = Vector2(600, 300)
 scale = Vector2(2, 2)
 texture = ExtResource("5_uth7j")
-script = ExtResource("3_mh4yb")
-color_key = 2
+script = ExtResource("2_mh4yb")
+target_viewport_path = NodePath("Game/SubViewportBlue")
 
 [node name="Control" type="CanvasLayer" parent="." unique_id=260247204]
+layer = 10
 
 [node name="Control" type="Control" parent="Control" unique_id=1016190469]
 layout_direction = 2
