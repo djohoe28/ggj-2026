@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cixydwepth8sy" path="res://scenes/entities/entity.gd" id="1_n3vjq"]
 [ext_resource type="Resource" uid="uid://e37gox3u4f5c" path="res://assets/position_tween_properties.tres" id="2_leugf"]
-[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://p1_shader.tres" id="3_xsxiy"]
-[ext_resource type="Texture2D" uid="uid://4x3ergmtnymb" path="res://assets/tileset_mockup (2).png" id="4_ocidy"]
-[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="5_1fwca"]
-[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://p2_shader.tres" id="6_lcbvo"]
+[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://assets/shaders/p1_material.tres" id="3_xsxiy"]
+[ext_resource type="Texture2D" uid="uid://4x3ergmtnymb" path="res://assets/tileset_mockup.png" id="4_ocidy"]
+[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/sprite_tint.gd" id="5_1fwca"]
+[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://assets/shaders/p2_material.tres" id="6_lcbvo"]
 [ext_resource type="Shape2D" uid="uid://dd0fnbcv7ao6d" path="res://assets/grid_block_shape.tres" id="7_ftwqg"]
 [ext_resource type="LabelSettings" uid="uid://byc8yqo5vl517" path="res://assets/debug_label_settings.tres" id="8_61f8k"]
 [ext_resource type="AudioStream" uid="uid://3tra5r28g224" path="res://assets/sfx/step.ogg" id="9_g3lru"]
@@ -49,7 +49,6 @@ frame = 22
 script = ExtResource("5_1fwca")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1591089347]
-modulate = Color(1, 0.76862746, 0.98039216, 1)
 material = ExtResource("6_lcbvo")
 texture = ExtResource("4_ocidy")
 hframes = 5

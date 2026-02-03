@@ -1,50 +1,50 @@
 [gd_resource type="TileSet" format=3 uid="uid://drb7k0754qprm"]
 
 [ext_resource type="PackedScene" uid="uid://bwall00000001" path="res://scenes/entities/tiles/Wall.tscn" id="1_wall"]
-[ext_resource type="PackedScene" uid="uid://i52ktbvwao7k" path="res://scenes/entities/tiles/P2_Box_V1.tscn" id="2_581ag"]
-[ext_resource type="PackedScene" uid="uid://bbox00000002" path="res://scenes/entities/tiles/Box.tscn" id="2_box"]
-[ext_resource type="PackedScene" uid="uid://bp1box000003" path="res://scenes/entities/tiles/P1_Box.tscn" id="3_p1box"]
-[ext_resource type="PackedScene" uid="uid://ba21nkhfxgbs8" path="res://scenes/entities/tiles/P2_Box_V2.tscn" id="3_uic34"]
-[ext_resource type="PackedScene" uid="uid://bp2box000004" path="res://scenes/entities/tiles/P2_Box.tscn" id="4_p2box"]
-[ext_resource type="PackedScene" uid="uid://bp1body00005" path="res://scenes/entities/tiles/P1_Body.tscn" id="5_p1body"]
-[ext_resource type="PackedScene" uid="uid://4w4cj5majjla" path="res://scenes/entities/tiles/CalibBox_v1.tscn" id="6_3vqt5"]
-[ext_resource type="PackedScene" uid="uid://bp2body00006" path="res://scenes/entities/tiles/P2_Body.tscn" id="6_p2body"]
+[ext_resource type="PackedScene" uid="uid://bp1body00005" path="res://scenes/entities/player/P1_Body.tscn" id="1_xexjk"]
+[ext_resource type="PackedScene" uid="uid://b7yqrtrotu1b2" path="res://scenes/entities/box/P1_Box_V1.tscn" id="2_42iwh"]
+[ext_resource type="PackedScene" uid="uid://bc0n3n8i11gue" path="res://scenes/entities/box/P1_Box_V2.tscn" id="3_gw0cc"]
+[ext_resource type="PackedScene" uid="uid://i52ktbvwao7k" path="res://scenes/entities/box/P2_Box_V1.tscn" id="4_rpfpw"]
+[ext_resource type="PackedScene" uid="uid://ba21nkhfxgbs8" path="res://scenes/entities/box/P2_Box_V2.tscn" id="5_lj3t5"]
+[ext_resource type="PackedScene" uid="uid://4w4cj5majjla" path="res://scenes/calibration/preview_p1.tscn" id="6_xexjk"]
+[ext_resource type="PackedScene" uid="uid://cy5axmhrdqfjn" path="res://scenes/calibration/preview_p2.tscn" id="7_42iwh"]
 [ext_resource type="PackedScene" uid="uid://bgoal0000007" path="res://scenes/entities/tiles/Goal.tscn" id="7_goal"]
-[ext_resource type="PackedScene" uid="uid://cy5axmhrdqfjn" path="res://scenes/entities/tiles/CalibBox_v2.tscn" id="7_p73ri"]
-[ext_resource type="PackedScene" uid="uid://c8g8uwqmhj6fh" path="res://scenes/entities/tiles/Controls_Left.tscn" id="8_fvwhe"]
-[ext_resource type="PackedScene" uid="uid://b7yqrtrotu1b2" path="res://scenes/entities/tiles/P1_Box_V1.tscn" id="8_prmj7"]
-[ext_resource type="PackedScene" uid="uid://bc0n3n8i11gue" path="res://scenes/entities/tiles/P1_Box_V2.tscn" id="9_dixdc"]
-[ext_resource type="PackedScene" uid="uid://dkf1vtwg0p7i2" path="res://scenes/entities/tiles/Controls_Right.tscn" id="9_gik80"]
-[ext_resource type="PackedScene" uid="uid://dmbjkvpj4p71g" path="res://scenes/entities/tiles/P1_Controls_Left.tscn" id="10_vl7vb"]
-[ext_resource type="PackedScene" uid="uid://m0llwljilnoa" path="res://scenes/entities/tiles/P1_Controls_Right.tscn" id="11_xexjk"]
-[ext_resource type="PackedScene" uid="uid://snmpsqakwp3b" path="res://scenes/entities/tiles/Box_V1.tscn" id="12_5e0im"]
-[ext_resource type="PackedScene" uid="uid://c4tp7madxkkbc" path="res://scenes/entities/tiles/Box_V2.tscn" id="13_6i0mp"]
-[ext_resource type="PackedScene" uid="uid://dnoc12c6rdul8" path="res://scenes/entities/tiles/P2_Controls_Left.tscn" id="13_42iwh"]
-[ext_resource type="PackedScene" uid="uid://ctqb8eaa7s08v" path="res://scenes/entities/tiles/P2_Controls_Right.tscn" id="14_gw0cc"]
+[ext_resource type="PackedScene" uid="uid://c8g8uwqmhj6fh" path="res://scenes/entities/controls/controls_left.tscn" id="8_xexjk"]
+[ext_resource type="PackedScene" uid="uid://dkf1vtwg0p7i2" path="res://scenes/entities/controls/controls_right.tscn" id="9_42iwh"]
+[ext_resource type="PackedScene" uid="uid://dmbjkvpj4p71g" path="res://scenes/entities/controls/controls_left_p1.tscn" id="10_gw0cc"]
+[ext_resource type="PackedScene" uid="uid://m0llwljilnoa" path="res://scenes/entities/controls/controls_right_p1.tscn" id="11_rpfpw"]
+[ext_resource type="PackedScene" uid="uid://bp2body00006" path="res://scenes/entities/player/P2_Body.tscn" id="12_f12id"]
+[ext_resource type="PackedScene" uid="uid://dnoc12c6rdul8" path="res://scenes/entities/controls/controls_left_p2.tscn" id="13_lj3t5"]
+[ext_resource type="PackedScene" uid="uid://ctqb8eaa7s08v" path="res://scenes/entities/controls/controls_right_p2.tscn" id="14_ggqbs"]
 [ext_resource type="PackedScene" uid="uid://dns17bsy2m1ca" path="res://scenes/entities/tiles/Background.tscn" id="15_xexjk"]
+[ext_resource type="PackedScene" uid="uid://bbox00000002" path="res://scenes/entities/box/Box.tscn" id="18_76ftk"]
+[ext_resource type="PackedScene" uid="uid://bp1box000003" path="res://scenes/entities/box/P1_Box.tscn" id="19_clas3"]
+[ext_resource type="PackedScene" uid="uid://bp2box000004" path="res://scenes/entities/box/P2_Box.tscn" id="20_esl4h"]
+[ext_resource type="PackedScene" uid="uid://snmpsqakwp3b" path="res://scenes/entities/box/Box_V1.tscn" id="21_ym4hn"]
+[ext_resource type="PackedScene" uid="uid://c4tp7madxkkbc" path="res://scenes/entities/box/Box_V2.tscn" id="22_dpkkf"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5e0im"]
-scenes/1/scene = ExtResource("5_p1body")
-scenes/2/scene = ExtResource("6_p2body")
+scenes/1/scene = ExtResource("1_xexjk")
+scenes/2/scene = ExtResource("12_f12id")
 scenes/3/scene = ExtResource("7_goal")
 scenes/4/scene = ExtResource("1_wall")
-scenes/5/scene = ExtResource("2_box")
-scenes/6/scene = ExtResource("3_p1box")
-scenes/7/scene = ExtResource("4_p2box")
-scenes/8/scene = ExtResource("12_5e0im")
-scenes/9/scene = ExtResource("13_6i0mp")
-scenes/10/scene = ExtResource("8_prmj7")
-scenes/11/scene = ExtResource("9_dixdc")
-scenes/12/scene = ExtResource("2_581ag")
-scenes/13/scene = ExtResource("3_uic34")
-scenes/14/scene = ExtResource("6_3vqt5")
-scenes/15/scene = ExtResource("7_p73ri")
-scenes/16/scene = ExtResource("8_fvwhe")
-scenes/17/scene = ExtResource("9_gik80")
-scenes/18/scene = ExtResource("10_vl7vb")
-scenes/19/scene = ExtResource("11_xexjk")
-scenes/20/scene = ExtResource("13_42iwh")
-scenes/21/scene = ExtResource("14_gw0cc")
+scenes/5/scene = ExtResource("18_76ftk")
+scenes/6/scene = ExtResource("19_clas3")
+scenes/7/scene = ExtResource("20_esl4h")
+scenes/8/scene = ExtResource("21_ym4hn")
+scenes/9/scene = ExtResource("22_dpkkf")
+scenes/10/scene = ExtResource("2_42iwh")
+scenes/11/scene = ExtResource("3_gw0cc")
+scenes/12/scene = ExtResource("4_rpfpw")
+scenes/13/scene = ExtResource("5_lj3t5")
+scenes/14/scene = ExtResource("6_xexjk")
+scenes/15/scene = ExtResource("7_42iwh")
+scenes/16/scene = ExtResource("8_xexjk")
+scenes/17/scene = ExtResource("9_42iwh")
+scenes/18/scene = ExtResource("10_gw0cc")
+scenes/19/scene = ExtResource("11_rpfpw")
+scenes/20/scene = ExtResource("13_lj3t5")
+scenes/21/scene = ExtResource("14_ggqbs")
 scenes/22/scene = ExtResource("15_xexjk")
 
 [resource]

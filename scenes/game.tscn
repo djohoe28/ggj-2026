@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cs6ahkkjcxle5"]
 
-[ext_resource type="Script" uid="uid://duusk8mnnqfo7" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cmk84w5mv16v6" path="res://scenes/Title.tscn" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://q1xf6auc6u0v" path="res://scenes/ui/calibration.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://duusk8mnnqfo7" path="res://scenes/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cmk84w5mv16v6" path="res://scenes/title.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://q1xf6auc6u0v" path="res://scenes/calibration/calibration.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bk42ecafgc82i" path="res://scenes/levels/level_01.tscn" id="4_ir15t"]
 [ext_resource type="PackedScene" uid="uid://ds46jwrv8uxo6" path="res://scenes/levels/level_02.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://bx8b26qjl7hdj" path="res://scenes/levels/level_03.tscn" id="6_rysoc"]

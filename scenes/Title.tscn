@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cmk84w5mv16v6"]
 
-[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://p1_shader.tres" id="1_aa56r"]
+[ext_resource type="Material" uid="uid://cv3v2paofvg55" path="res://assets/shaders/p1_material.tres" id="1_aa56r"]
 [ext_resource type="Script" uid="uid://3m2yq7ahqk6x" path="res://scenes/title.gd" id="1_agd63"]
 [ext_resource type="Texture2D" uid="uid://dv3gws6awwe4v" path="res://assets/graphics/title-city.png" id="2_agd63"]
-[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/color_only.gd" id="3_mh4yb"]
-[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://p2_shader.tres" id="4_wq2ky"]
+[ext_resource type="Script" uid="uid://c6njsbin4g70q" path="res://scripts/sprite_tint.gd" id="3_mh4yb"]
+[ext_resource type="Material" uid="uid://bgji480bux4ri" path="res://assets/shaders/p2_material.tres" id="4_wq2ky"]
 [ext_resource type="Texture2D" uid="uid://j8fij4fa1q8s" path="res://assets/graphics/title-country.png" id="5_uth7j"]
 
 [node name="Title" type="Node2D" unique_id=677840180]

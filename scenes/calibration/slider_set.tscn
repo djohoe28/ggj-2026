@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct1n0tss4fb3"]
 
-[ext_resource type="Script" uid="uid://d2qpirwx2mdqh" path="res://scenes/slider_set.gd" id="1_icnqq"]
+[ext_resource type="Script" uid="uid://d2qpirwx2mdqh" path="res://scenes/calibration/slider_set.gd" id="1_icnqq"]
 
 [node name="SliderSet" type="Control" unique_id=806489789]
 layout_mode = 3
